@@ -127,6 +127,7 @@ src/
 |   |-- Comic.jsx
 |   |-- Footer.jsx
 |   |-- FormularioContacto.jsx
+|   |-- FormularioBusqueda.jsx
 |   |-- Header.jsx
 |   |-- ListaArtistaComic.jsx
 |   |-- ListaComics.jsx
