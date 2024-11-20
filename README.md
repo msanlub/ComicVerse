@@ -35,36 +35,35 @@ Existen varias aplicaciones y sitios web que ofrecen información sobre cómics 
 - ComicBookRealm
 
 Sin embargo, ComicVerse se diferencia por:
-
-1. Enfoque exclusivo en el universo Marvel
-2. Interfaz de usuario más intuitiva y moderna
-3. Funciones de personalización avanzadas
-4. Información relacionada (cómics, personajes, creadores y eventos)
+- Enfoque exclusivo en el universo Marvel
+- Interfaz de usuario más intuitiva y moderna
+- Funciones de personalización avanzadas
+- Información relacionada (cómics, personajes, creadores y eventos)
 
 ## Funcionalidades clave
 
-1. Exploración detallada de cómics:
+ **Exploración detallada de cómics:**
    - Imagen, título, descripción
    - Personajes involucrados
    - Creadores
    - Cómics relacionados
 
-2. Información completa de personajes:
+**Información completa de personajes:**
    - Imagen, nombre, biografía
    - Lista de cómics en los que aparece
    - Eventos relacionados
 
-3. Perfiles de artistas/creadores:
+**Perfiles de artistas/creadores:**
    - Imagen, nombre completo
    - Lista de cómics
    - Eventos en los que participan
 
-4. Exploración de eventos:
+**Exploración de eventos:**
    - Imagen, título, fechas de inicio y fin
    - Historia del evento
    - Próximo evento
 
-5. Perfil de usuario personalizable:
+**Perfil de usuario personalizable:**
    - Imagen de perfil
    - Nombre
    - Cómics favoritos
