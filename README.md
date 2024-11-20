@@ -143,6 +143,23 @@ src/
 |-- Main.jsx
 ```
 
+### Assets: 
+Contiene recursos estáticos como iconos.
+### Components: 
+Almacena componentes reutilizables de React.
+- **eventos:** Componentes específicos para la funcionalidad de eventos.
+- Otros componentes como Comic, Footer, Header, y las Listas de comics, artistas y eventos, los cuales están formados por los componentes Comic, Evento, Artista.
+### Pages: 
+Contiene componentes que representan páginas completas de la aplicación, las cuales llaman a componentes generales.
+### Layouts: 
+Incluye componentes de diseño, como LayoutPublic.jsx, contiene la estructura común para las páginas públicas.
+### Router: 
+Contiene la configuración del enrutador de la aplicación.
+### Styles: 
+Destinado a archivos de estilos de las páginas y componentes.
+### Main.jsx: 
+Punto de entrada principal de la aplicación React, contiene el enrutamiento y la página de inicio como raíz del proyecto como consecuencia.
+
 ## Enlaces de interés
 
 [Documentación API Marvel](https://developer.marvel.com/docs)
