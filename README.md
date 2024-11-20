@@ -151,6 +151,7 @@ src/
 
 ### Assets: 
 Contiene recursos estáticos como iconos.
+
 ### Components: 
 Almacena componentes reutilizables de React.
 - **eventos:** Componentes específicos para la funcionalidad de eventos.

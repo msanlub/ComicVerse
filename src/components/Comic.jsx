@@ -1,6 +1,6 @@
 import '../styles/Comic.css';
 
-const Comic = ({ id, imagen, titulo, isbn }) => {
+const Comic = ({ id, imagen, titulo}) => {
   //console.log( titulo, isbn , imagen)
   return (
     <section className={`contenedor-comic-${id}`}>
@@ -8,8 +8,7 @@ const Comic = ({ id, imagen, titulo, isbn }) => {
         <img src={imagen} alt={`Portada de ${titulo}`} />
       </section>
       <section className='infoComic'>
-        <h1>{titulo}</h1>
-        <h3>ISBN: {isbn}</h3>    
+        <h1>{titulo}</h1>   
       </section>
     </section>
   );

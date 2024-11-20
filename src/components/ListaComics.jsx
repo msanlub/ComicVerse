@@ -12,7 +12,6 @@ const ListaComics = ({ comics }) => {
               id={comic.id}
               imagen={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
               titulo={comic.title}
-              isbn={comic.isbn}
             />
           ))}
         </section>
