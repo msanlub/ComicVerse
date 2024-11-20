@@ -24,11 +24,10 @@ const FormularioContacto = () => {
       [name]: type === 'checkbox' ? checked : value
     }));
 
-    // Validación en tiempo real
     validateField(name, type === 'checkbox' ? checked : value);
   };
 
-  // Función para validar un campo específico
+  // Función para validar cada campo
   const validateField = (name, value) => {
     let errorMessage = '';
 
@@ -65,8 +64,7 @@ const FormularioContacto = () => {
     const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
     return formatoEmail.test(email);
   };
-
-  // Maneja el envío del formulario
+  // manejo de envio de formiulario
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -76,7 +74,7 @@ const FormularioContacto = () => {
       return;
     }
 
-    // Si todas las validaciones pasan, se pueden procesar los datos (implementacion de envio de datos??)
+    // TODO: implementacion de envio de datos a bd
     console.log('Datos del formulario:', formData);
     
     // Resetear el formulario después del envío
@@ -87,7 +85,7 @@ const FormularioContacto = () => {
       aceptoPolitica: false
     });
     
-    setErrors({ email: '', nombre: '', mensaje: '' }); // Resetear errores
+    setErrors({ email: '', nombre: '', mensaje: '' }); 
   };
 
   return (
