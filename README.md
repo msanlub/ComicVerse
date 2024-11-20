@@ -156,7 +156,8 @@ Contiene recursos estáticos como iconos.
 ### Components: 
 Almacena componentes reutilizables de React.
 - **eventos:** Componentes específicos para la funcionalidad de eventos.
-- Otros componentes como Comic, Footer, Header, y las Listas de comics, artistas y eventos, los cuales están formados por los componentes Comic, Evento, Artista.
+- Otros componentes como Comic, Footer, Header, y las Listas de comics, artistas y eventos, los cuales están formados por los componentes Comic, Evento, Artista que son reutilizables casi en todas las páginas de la web.
+- Formularios para ser más fácil el manejo del formulario y luego llamarlo desde las páginas que los integren.
 ### Pages: 
 Contiene componentes que representan páginas completas de la aplicación, las cuales llaman a componentes generales.
 ### Layouts: 
