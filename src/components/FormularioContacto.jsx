@@ -1,50 +1,56 @@
 import { useState } from 'react';
 
 const FormularioContacto = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    nombre: '',
-    mensaje: '',
-    aceptoPolitica: false
-  });
+  const estadoInicial = {
+    TodoEmail: '',
+    TodoNombre: '',
+    TodoMensaje: '',
+    TodoCheck: false
+  }
 
-  const [errors, setErrors] = useState({
-    email: '',
-    nombre: '',
-    mensaje: ''
-  });
+  const [todo, setTodo] = useState(estadoInicial);
+  const [errors, setErrors] = useState({});
 
-  // Maneja cambios en los campos del formulario
+  // maneja el envio de formularios
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const {TodoNombre, TodoMensaje, TodoEmail, TodoCheck} = todo;
+    if (!TodoNombre.trim() || !TodoMensaje.trim() || !validarEmail(TodoEmail) || !TodoCheck) {
+      alert("Por favor corrige los errores antes de enviar.");
+      return;
+    }
+    console.log('Datos del formulario:', todo);
+    setTodo(estadoInicial);
+    setErrors({});
+  };
+
+  // "agrega" los cambios dependiendo si es text o checkbox
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
-    // Actualiza el estado previo del formulario por cada elemento (se va guardando una copia digamos)
-    setFormData(prevState => ({
-      ...prevState,
+    setTodo({
+      ...todo,
       [name]: type === 'checkbox' ? checked : value
-    }));
-
+    });
     validateField(name, type === 'checkbox' ? checked : value);
   };
 
-  // Función para validar cada campo
+  // valida cada campo y definee mensaje de error
   const validateField = (name, value) => {
     let errorMessage = '';
-
     switch (name) {
-      case 'email':
+      case 'TodoEmail':
         if (!value) {
           errorMessage = 'El email es requerido.';
         } else if (!validarEmail(value)) {
           errorMessage = 'Por favor, introduce un email válido.';
         }
         break;
-      case 'nombre':
+      case 'TodoNombre':
         if (!value.trim()) {
           errorMessage = 'El nombre no puede estar vacío.';
         }
         break;
-      case 'mensaje':
+      case 'TodoMensaje':
         if (!value.trim()) {
           errorMessage = 'El mensaje no puede estar vacío.';
         }
@@ -52,40 +58,15 @@ const FormularioContacto = () => {
       default:
         break;
     }
-
     setErrors(prevErrors => ({
       ...prevErrors,
       [name]: errorMessage
     }));
   };
-
-  // Función para validar el email
+  // valida el formato de email
   const validarEmail = (email) => {
     const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
     return formatoEmail.test(email);
-  };
-  // manejo de envio de formiulario
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Verifica si hay errores antes de enviar
-    if (errors.email || errors.nombre || errors.mensaje) {
-      alert("Por favor corrige los errores antes de enviar.");
-      return;
-    }
-
-    // TODO: implementacion de envio de datos a bd
-    console.log('Datos del formulario:', formData);
-    
-    // Resetear el formulario después del envío
-    setFormData({
-      email: '',
-      nombre: '',
-      mensaje: '',
-      aceptoPolitica: false
-    });
-    
-    setErrors({ email: '', nombre: '', mensaje: '' }); 
   };
 
   return (
@@ -93,51 +74,48 @@ const FormularioContacto = () => {
       <h2>¿Cómo podemos ayudarte?</h2>
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <label htmlFor="nombre">Nombre:</label>
+          <label htmlFor="TodoNombre">Nombre:</label>
           <input 
             type="text" 
-            id="nombre" 
-            name="nombre" 
-            value={formData.nombre}
+            name="TodoNombre" 
+            value={todo.TodoNombre}
             onChange={handleChange}
             required 
           />
-          {errors.nombre && <span className="error">{errors.nombre}</span>}
+          {errors.TodoNombre && <span className="error">{errors.TodoNombre}</span>}
 
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="TodoEmail">Email:</label>
           <input 
             type="email" 
-            id="email" 
-            name="email" 
-            value={formData.email}
+            name="TodoEmail" 
+            value={todo.TodoEmail}
             onChange={handleChange}
             required 
           />
-          {errors.email && <span className="error">{errors.email}</span>}
+          {errors.TodoEmail && <span className="error">{errors.TodoEmail}</span>}
           
-          <label htmlFor="mensaje">Escríbenos:</label>
+          <label htmlFor="TodoMensaje">Escríbenos:</label>
           <textarea 
-            id="mensaje" 
-            name="mensaje" 
+            name="TodoMensaje" 
             rows="4" 
-            value={formData.mensaje}
+            value={todo.TodoMensaje}
             onChange={handleChange}
             required
           ></textarea>
-          {errors.mensaje && <span className="error">{errors.mensaje}</span>}
+          {errors.TodoMensaje && <span className="error">{errors.TodoMensaje}</span>}
           
           <label>
             <input 
               type="checkbox" 
-              name="aceptoPolitica" 
-              checked={formData.aceptoPolitica}
+              name="TodoCheck" 
+              checked={todo.TodoCheck}
               onChange={handleChange}
               required
             /> He leído y acepto la política de privacidad.
           </label>
         </fieldset>
         
-        <button type="submit">Enviar</button>
+        <button className='enviarContacto' type="submit">Enviar</button>
       </form>
     </section>
   );

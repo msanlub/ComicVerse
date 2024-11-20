@@ -1,21 +1,27 @@
 # Proyecto de Aplicación Web: ComicVerse
 
-![](./img/panoramica.jpeg)
+![](./src/assets/imgProyecto//panoramica.jpeg)
+
+💡 [Idea de la aplicación](#idea-de-la-aplicación)
+
+👥 [Audiencia objetivo](#audiencia-objetivo)
+
+📊 [Análisis de mercado](#análisis-de-mercado)
+
+🔑 [Funcionalidades clave](#funcionalidades-clave)
+
+🛠️ [Tecnologías a utilizar](#tecnologías-a-utilizar)
+
+📁 [Estructura del proyecto](#estructura-del-proyecto)
+
+🔗 [Enlaces de interés](#enlaces-de-interés)
 
 
-1. [Idea de la aplicación](#idea-de-la-aplicación)
-2. [Audiencia objetivo](#audiencia-objetivo)
-3. [Análisis de mercado](#análisis-de-mercado)
-4. [Funcionalidades clave](#funcionalidades-clave)
-5. [Tecnologías a utilizar](#tecnologías-a-utilizar)
-6. [Enlaces de interés](#enlaces-de-interés)
-
-
-## Idea de la aplicación
+## 💡 Idea de la aplicación
 
 ComicVerse es una aplicación web diseñada para los aficionados de los cómics de Marvel. Su propósito principal es proporcionar una plataforma interactiva y fácil de usar donde los usuarios puedan explorar, descubrir y seguir sus cómics, personajes, creadores y eventos favoritos del universo Marvel. La aplicación busca resolver la necesidad de tener un acceso centralizado, organizado y personalizado a la vasta información del mundo de los cómics de Marvel.
 
-## Audiencia objetivo
+## 👥 Audiencia objetivo
 
 La aplicación está dirigida principalmente a:
 
@@ -26,7 +32,7 @@ La aplicación está dirigida principalmente a:
 
 Estos usuarios se beneficiarán de una plataforma que les permita acceder fácilmente a información detallada, descubrir nuevo contenido y personalizar su experiencia según sus preferencias.
 
-## Análisis de mercado
+## 📊 Análisis de mercado
 
 Existen varias aplicaciones y sitios web que ofrecen información sobre cómics de Marvel, como:
 
@@ -42,37 +48,37 @@ Sin embargo, ComicVerse se diferencia por:
 3. Funciones de personalización avanzadas
 4. Información relacionada (cómics, personajes, creadores y eventos)
 
-## Funcionalidades clave
+## 🔑 Funcionalidades clave
 
- **Exploración detallada de cómics:**
+📚**Exploración detallada de cómics:**
    - Imagen, título, descripción
    - Personajes involucrados
    - Creadores
    - Cómics relacionados
 
-**Información completa de personajes:**
+🦸‍♂️**Información completa de personajes:**
    - Imagen, nombre, biografía
    - Lista de cómics en los que aparece
    - Eventos relacionados
 
-**Perfiles de artistas/creadores:**
+🎨**Perfiles de artistas/creadores:**
    - Imagen, nombre completo
    - Lista de cómics
    - Eventos en los que participan
 
-**Exploración de eventos:**
+📅**Exploración de eventos:**
    - Imagen, título, fechas de inicio y fin
    - Historia del evento
    - Próximo evento
 
-**Perfil de usuario personalizable:**
+👤**Perfil de usuario personalizable:**
    - Imagen de perfil
    - Nombre
    - Cómics favoritos
    - Creadores/atistas favoritos
 
 
-## Tecnologías a utilizar
+## 🛠️ Tecnologías a utilizar
 
 ### Frontend: React con Vite
 
@@ -108,7 +114,7 @@ Sin embargo, ComicVerse se diferencia por:
 
      Librería de iconos para facilitar su uso e implementación. 
 
-## Estructura del proyecto
+## 📁 Estructura del proyecto
 ```bash
 src/
 |-- assets/
@@ -160,7 +166,7 @@ Destinado a archivos de estilos de las páginas y componentes.
 ### Main.jsx: 
 Punto de entrada principal de la aplicación React, contiene el enrutamiento y la página de inicio como raíz del proyecto como consecuencia.
 
-## Enlaces de interés
+## 🔗 Enlaces de interés
 
 [Documentación API Marvel](https://developer.marvel.com/docs)
 
