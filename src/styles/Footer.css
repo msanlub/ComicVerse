@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@600&display=swap');
+
+
+html, body {
+    height: 100%; /* Asegura que el body ocupe toda la altura */
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+.footer {
+    background-color: #fff; /* Color de fondo oscuro */
+    color: white; /* Color del texto */
+    padding: 4vh; /* Espaciado interno */
+    display: flex; /* Usar flexbox para disposición */
+    flex-direction: row; /* Alinear elementos en columna */
+    justify-content: space-between;
+    align-items: center; /* Centrar horizontalmente */
+}
+
+.navbarfooter {
+    margin-bottom: 0px; /* Espaciado debajo de la navbar */
+}
+
+.navbarfooter ul {
+    list-style-type: none; /* Eliminar puntos de la lista */
+    margin: 0; /* Eliminar márgenes por defecto */
+    padding: 0; /* Eliminar padding por defecto */
+    display: flex; /* Alinear elementos en fila */
+    justify-content: space-between;
+}
+
+.navbarfooter li {
+    margin-right: 4vh; /* Espaciado entre los elementos del menú */
+}
+
+.navbarfooter a {
+    text-decoration: none;
+    font-family: 'Alumni Sans', sans-serif; /* Asegúrate de que la fuente esté importada */
+    font-weight: 600; /* SemiBold */
+    font-size: 20px; /* Tamaño de la fuente */
+    letter-spacing: 0.05em; /* Separación entre letras del 5% */
+    color: rgb(0, 0, 0); /* Color del texto del menú */
+}
+
+.navbarfooter a:hover {
+    text-decoration: underline; /* Subrayar al pasar el ratón sobre el enlace */
+}
+
+.logoFooter img {
+    max-width: 90px; /* Ajustar el tamaño del logo */
+    height: auto; /* Mantener proporciones del logo */
+}
+
+
+    .navbar ul {
+        flex-direction: row; /* Cambiar a alineación vertical en pantallas pequeñas */
+        justify-content: space-between;
+        align-items: center; /* Centrar los enlaces en vista vertical */
+    }
+
+    .navbar li {
+        margin-right: 0; /* Eliminar margen derecho en vista vertical */
+        margin-bottom: 10px; /* Espaciado entre enlaces en vista vertical */
+    }

@@ -1,0 +1,11 @@
+.lista-comics-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0;
+  }
+  
+  .lista-comics {
+    display: flex;
+    gap: 28px; /* Espacio entre las tarjetas de cómics */
+    padding: 0 8px;
+  }
