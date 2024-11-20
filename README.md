@@ -30,15 +30,17 @@ Estos usuarios se beneficiarán de una plataforma que les permita acceder fácil
 
 Existen varias aplicaciones y sitios web que ofrecen información sobre cómics de Marvel, como:
 
-- Marvel.com (sitio oficial)
-- Comic Vine
-- ComicBookRealm
+-> [Marvel comic](https://www.marvel.com/comics/) (sitio oficial)
+
+-> [Comic Vine](https://comicvine.gamespot.com/)
+
+-> [ComicBookRealm](https://comicbookrealm.com/)
 
 Sin embargo, ComicVerse se diferencia por:
-- Enfoque exclusivo en el universo Marvel
-- Interfaz de usuario más intuitiva y moderna
-- Funciones de personalización avanzadas
-- Información relacionada (cómics, personajes, creadores y eventos)
+1. Enfoque exclusivo en el universo Marvel
+2. Interfaz de usuario más intuitiva y moderna
+3. Funciones de personalización avanzadas
+4. Información relacionada (cómics, personajes, creadores y eventos)
 
 ## Funcionalidades clave
 
@@ -72,31 +74,31 @@ Sin embargo, ComicVerse se diferencia por:
 
 ## Tecnologías a utilizar
 
-**Frontend**: React con Vite
+### Frontend: React con Vite
 
   React ofrece un rendimiento óptimo y una gran flexibilidad para crear interfaces de usuario interactivas. Vite proporciona una configuración rápida y un entorno de desarrollo eficiente.
 
-**API**: Marvel API
+### API: Marvel API
 
    Fuente oficial y confiable de datos sobre el universo Marvel.
 
-**Entorno de desarrollo**: Visual Studio Code
+### Entorno de desarrollo: Visual Studio Code
   
   Editor de código versátil con amplio soporte para React y JavaScript.
 
-**Control de versiones**: Git y GitHub
+### Control de versiones: Git y GitHub
   
   Facilita el seguimiento de cambios y la colaboración en el proyecto.
 
-**Despliegue**: Netlify
+### Despliegue: Netlify
 
    Para la implementación y alojamiento de la web.
 
-**Base de datos**: IndexedDB
+### Base de datos: IndexedDB
 
    Almacenamiento de datos localmente en el navegador (almacén de configuración de usuario, de comics favoritos y de creador/artista favorito) asegurando la persistencia de la información.
 
-**Librerías**:
+### Librerías:
     
    - React Router:
 
@@ -106,7 +108,42 @@ Sin embargo, ComicVerse se diferencia por:
 
      Librería de iconos para facilitar su uso e implementación. 
 
-### Enlaces de interés
+## Estructura del proyecto
+```bash
+src/
+|-- assets/
+|   |-- icons/
+|-- components/
+|   |-- eventos/
+|   |   |-- Evento.jsx
+|   |   |-- ListaEventos.jsx
+|   |-- ArtistaComic.jsx
+|   |-- Comic.jsx
+|   |-- Footer.jsx
+|   |-- FormularioContacto.jsx
+|   |-- Header.jsx
+|   |-- ListaArtistaComic.jsx
+|   |-- ListaComics.jsx
+|-- pages/
+|   |-- Artista.jsx
+|   |-- Comic.jsx
+|   |-- ConfigUsuario.jsx
+|   |-- Contacto.jsx
+|   |-- Evento.jsx
+|   |-- Inicio.jsx
+|   |-- NotFound.jsx
+|   |-- Personaje.jsx
+|   |-- Usuario.jsx
+|-- layouts/
+|   |-- LayoutPublic.jsx
+|-- router/
+|   |-- index.jsx
+|-- styles/
+|   |-- 
+|-- Main.jsx
+```
+
+## Enlaces de interés
 
 [Documentación API Marvel](https://developer.marvel.com/docs)
 
