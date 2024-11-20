@@ -72,35 +72,39 @@ Sin embargo, ComicVerse se diferencia por:
 
 ## Tecnologías a utilizar
 
-- **Frontend**: React con Vite
+**Frontend**: React con Vite
 
   React ofrece un rendimiento óptimo y una gran flexibilidad para crear interfaces de usuario interactivas. Vite proporciona una configuración rápida y un entorno de desarrollo eficiente.
 
-- **API**: Marvel API
+**API**: Marvel API
 
-    Fuente oficial y confiable de datos sobre el universo Marvel.
+   Fuente oficial y confiable de datos sobre el universo Marvel.
 
-- **Entorno de desarrollo**: Visual Studio Code
+**Entorno de desarrollo**: Visual Studio Code
   
   Editor de código versátil con amplio soporte para React y JavaScript.
 
-- **Control de versiones**: Git y GitHub
+**Control de versiones**: Git y GitHub
   
   Facilita el seguimiento de cambios y la colaboración en el proyecto.
 
-- **Despliegue**: Netlify
+**Despliegue**: Netlify
 
-    Para la implementación y alojamiento de la web.
+   Para la implementación y alojamiento de la web.
 
-- **Base de datos**: IndexedDB
+**Base de datos**: IndexedDB
 
-    Almacenamiento de datos localmente en el navegador (almacén de configuración de usuario, de comics favoritos y de creador/artista favorito) asegurando la persistencia de la información.
+   Almacenamiento de datos localmente en el navegador (almacén de configuración de usuario, de comics favoritos y de creador/artista favorito) asegurando la persistencia de la información.
 
-- **Librerías**:
+**Librerías**:
     
-    - React Router:
+   - React Router:
 
-        Realiza el enrutamiento de la aplicación, permitiendo crear rutas dinámicas y gestionando la navegación.
+     Realiza el enrutamiento de la aplicación, permitiendo crear rutas dinámicas y gestionando la navegación.
+     
+   - React icons:
+
+     Librería de iconos para facilitar su uso e implementación. 
 
 ### Enlaces de interés
 
