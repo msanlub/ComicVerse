@@ -1,4 +1,4 @@
-import '../styles/Comic.css';
+import '../../css/components/Comic.css';
 
 const Comic = ({ id, imagen, titulo}) => {
   //console.log( titulo, isbn , imagen)

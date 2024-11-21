@@ -1,5 +1,5 @@
 import Comic from './Comic'; 
-import '../styles/ListaComics.css';
+import '../../css/components/ListaComics.css';
 
 const ListaComics = ({ comics }) => {
   //console.log(comics)

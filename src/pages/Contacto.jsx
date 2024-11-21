@@ -1,4 +1,4 @@
-import FormularioContacto from "../components/FormularioContacto"
+import FormularioContacto from "../components/forms/FormularioContacto"
 import imgContacto from '../assets/img_contacto.jpg';
 
 const Contacto = () => {

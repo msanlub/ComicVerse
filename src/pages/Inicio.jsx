@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import ListaEventos from "../components/eventos/ListaEventos";
-import ListaComics from "../components/ListaComics";
-import FormularioBusqueda from "../components/FormularioBusqueda"
+import ListaEventos from "../components/events/ListaEventos";
+import ListaComics from "../components/comics/ListaComics";
+import FormularioBusqueda from "../components/forms/FormularioBusqueda"
 
 const Inicio = () => {
   const [comicsData, setComicsData] = useState([]);
