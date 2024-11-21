@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
     {
       path: "/",
       element: <LayoutPublic />,
-    //   aquí se muestran los hijos de la ruta indicada, lo que ira en outlet de layout, siendo inicio la raíz
+    //  aquí se muestran los hijos de la ruta indicada, lo que ira en outlet de layout, siendo inicio la raíz
       children: [
         {
           index: true,

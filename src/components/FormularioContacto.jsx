@@ -24,7 +24,7 @@ const FormularioContacto = () => {
     setErrors({});
   };
 
-  // "agrega" los cambios dependiendo si es text o checkbox
+  // "agrega" los cambios al todo dependiendo si es text o checkbox
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setTodo({
@@ -58,11 +58,13 @@ const FormularioContacto = () => {
       default:
         break;
     }
+
     setErrors(prevErrors => ({
       ...prevErrors,
       [name]: errorMessage
     }));
   };
+
   // valida el formato de email
   const validarEmail = (email) => {
     const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
@@ -97,7 +99,7 @@ const FormularioContacto = () => {
           <label htmlFor="TodoMensaje">Escríbenos:</label>
           <textarea 
             name="TodoMensaje" 
-            rows="4" 
+            rows="8" 
             value={todo.TodoMensaje}
             onChange={handleChange}
             required

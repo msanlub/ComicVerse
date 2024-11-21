@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ListaEventos from "../components/eventos/ListaEventos";
 import ListaComics from "../components/ListaComics";
+import FormularioBusqueda from "../components/FormularioBusqueda"
 
 const Inicio = () => {
   const [comicsData, setComicsData] = useState([]);
@@ -27,8 +28,10 @@ const Inicio = () => {
 
         setComicsData(comicsResult.data.results);
         setEventsData(eventsResult.data.results);
+
       } catch (err) {
         setError(err.message);
+        
       } finally {
         setLoading(false);
       }
@@ -42,15 +45,15 @@ const Inicio = () => {
 
   return (
     <div>
-      <div>Inicio</div>
       <p>Imágenes</p>
-      <div>Filtros de búsqueda</div>
-      <div>
+      <h1>Encuentra los comics de tus personajes favoritos</h1>
+      <FormularioBusqueda />
+      <section className="listados__aleatorios">
         <h1>Cómics</h1>
         <ListaComics comics={comicsData} />
         <h1>Eventos</h1>
         <ListaEventos eventos={eventsData} />
-      </div>
+      </section>
     </div>
   );
 };

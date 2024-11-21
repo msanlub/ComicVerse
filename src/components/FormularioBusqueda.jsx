@@ -3,14 +3,13 @@ import { useState } from 'react';
 const BuscadorComics = () => {
   const [busqueda, setBusqueda] = useState('');
   const [formato, setFormato] = useState('');
-  const [idioma, setIdioma] = useState('');
-  const [paginas, setPaginas] = useState('');
-  const [conVariantes, setConVariantes] = useState(false);
+  const [orden, setOrden] = useState('');
+  const [noVariantes, setNoVariantes] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //TODO fetch api
-    console.log({ busqueda, formato, idioma, paginas, conVariantes });
+    //TODO fetch api??
+    console.log({ busqueda, formato, orden, noVariantes });
   };
 
   return (
@@ -19,49 +18,51 @@ const BuscadorComics = () => {
         type="text"
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
-        placeholder="Buscar por título o creador"
+        placeholder="Buscar por personaje/es"
+      />
+
+      <input
+        type="text"
+        value={busqueda}
+        onChange={(e) => setBusqueda(e.target.value)}
+        placeholder="Buscar por creador/es"
       />
 
       <select value={formato} onChange={(e) => setFormato(e.target.value)}>
-        <option value="">Seleccionar formato</option>
+        <option value="">Formato de publicación</option>
         <option value="comic">Comic</option>
         <option value="magazine">Revista</option>
-        {/* TODO añadir opciones segun la api */}
+        <option value="trade paperback">De bolsillo</option>
+        <option value="hardcover">Tapa dura</option>
+        <option value="graphic novel">Novela gráfica</option>
+        <option value="digital comic">Digital</option>
       </select>
 
-      <select value={idioma} onChange={(e) => setIdioma(e.target.value)}>
-        <option value="">Seleccionar idioma</option>
-        <option value="es">Español</option>
-        <option value="en">Inglés</option>
-        {/* TODO añadir opciones segun la api */}
+      <select value={orden} onChange={(e) => setOrden(e.target.value)}>
+        <option value="">Ordenar por</option>
+        <option value="FocDate">Fecha de publicación</option>
+        <option value="onsaleDate">Fecha de venta</option>
+        <option value="title">Título</option>
       </select>
 
-      <select value={paginas} onChange={(e) => setPaginas(e.target.value)}>
-        <option value="">Seleccionar nº de páginas</option>
-        <option value="0-50">0-50</option>
-        <option value="51-100">51-100</option>
-        <option value="101+">101+</option>
-        {/* TODO añadir opciones segun la api */}
-      </select>
-
-      <div>
+      <section>
         <label>
           <input
             type="radio"
-            checked={!conVariantes}
-            onChange={() => setConVariantes(false)}
-          />
-          Sin variantes
-        </label>
-        <label>
-          <input
-            type="radio"
-            checked={conVariantes}
-            onChange={() => setConVariantes(true)}
+            checked={!noVariantes}
+            onChange={() => setNoVariantes(false)}
           />
           Con variantes
         </label>
-      </div>
+        <label>
+          <input
+            type="radio"
+            checked={noVariantes}
+            onChange={() => setNoVariantes(true)}
+          />
+          Sin variantes
+        </label>
+      </section>
 
       <button type="submit">Buscar</button>
     </form>
