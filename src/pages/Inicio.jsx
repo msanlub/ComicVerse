@@ -8,7 +8,7 @@ const Inicio = () => {
   const [eventsData, setEventsData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const apiKey = 'cee90f8ea5b8601ab4a8f5d0c12a47a2'; 
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     const fetchData = async () => {
