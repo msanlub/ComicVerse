@@ -1,26 +1,41 @@
-import { Link } from 'react-router-dom';
 import logo from '../assets/logoHeader.png';
 import '../css/components/Header.css'; 
+import { NavLink} from "react-router-dom";
+import { UserContext } from '../context/UserContext'
+import { useContext } from "react";
+import { logOut } from "../config/Firebase";
 
 const Header = () => {
+    const {user, setUser} = useContext(UserContext)
+    
+    const handleLogout = async()=> {
+        await logOut()
+        setUser(false)
+    }
+
     return (
-        <section className="header">
-            <section className="logo">
-                <img src={logo} alt="Logo" />
-            </section>
-            <nav className="navbar">
-                    <ul>
-                        <li><Link to='/' >INICIO</Link></li>
-                        <li><Link to='/usuario' >USUARIO</Link></li>
-                        <li><Link to='/evento' >LOGIN</Link></li>
-                        <li><Link to='/artista' >ARTISTA</Link></li>
-                    </ul>
-                </nav>
-            <section className="buscador-container">
-                <input type="text" placeholder="Buscar..." />
-            </section>     
-        </section>
+        <nav>
+            <img src={logo} alt='logo'/>
+            <NavLink to="/">Inicio  |</NavLink>
+
+            {
+                user && <NavLink to="/usuario">Usuario  |</NavLink>
+            }
+            {
+                user ? (
+                    <NavLink onClick={handleLogout}>Cerrar sesión</NavLink>
+                ):(
+                    // englobar en un componente 
+                    <>
+                        <NavLink to="/login">Login  |</NavLink>
+                        <NavLink to="/registro">Registro  |</NavLink>
+                    </>
+                )
+            }
+        </nav>
     );
 };
+
+
 
 export default Header;

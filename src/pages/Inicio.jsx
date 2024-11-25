@@ -8,7 +8,7 @@ const Inicio = () => {
   const [eventsData, setEventsData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = import.meta.env.VITE_MARVEL_API_KEY;
 
   useEffect(() => {
     const fetchData = async () => {

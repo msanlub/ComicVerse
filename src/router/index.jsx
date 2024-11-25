@@ -4,11 +4,14 @@ import Artista from "../pages/Artista";
 import Comic from "../pages/Comic";
 import ConfigUsuario from "../pages/ConfigUsuario";
 import LayoutPublic from "../layouts/LayoutPublic";
+import LayoutPrivate from "../layouts/LayoutPrivate";
 import Evento from "../pages/Evento";
 import Personaje from "../pages/Personaje";
 import Usuario from "../pages/Usuario";
 import Contacto from "../pages/Contacto";
 import NotFound from "../pages/NotFound";
+import Login from "../pages/Login";
+import Registro from "../pages/Registro";
 
 export const router = createBrowserRouter([
     {
@@ -33,9 +36,23 @@ export const router = createBrowserRouter([
           element: <ConfigUsuario />,
         },
         {
-          path: "/usuario",
-          element: <Usuario />,
+          path: "/login",
+          element: <Login />,
         },
+        {
+            path: "/registro",
+            element: <Registro />,
+        },
+        {
+          path: "/usuario",
+          element: <LayoutPrivate />,
+          children: [
+              {
+                  index: true,
+                  element: <Usuario />,
+              },
+          ],
+      },
         {
           path: "/personaje",
           element: <Personaje />,

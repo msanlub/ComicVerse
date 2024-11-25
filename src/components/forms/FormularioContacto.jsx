@@ -1,125 +1,135 @@
 import { useState } from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { Avatar, Box, TextField, Typography, FormControlLabel, Checkbox } from '@mui/material';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import { LoadingButton } from '@mui/lab';
 
 const FormularioContacto = () => {
   const estadoInicial = {
-    TodoEmail: '',
-    TodoNombre: '',
-    TodoMensaje: '',
-    TodoCheck: false
-  }
+    email: '',
+    name: '',
+    message: '',
+    acceptTerms: false,
+  };
 
   const [todo, setTodo] = useState(estadoInicial);
   const [errors, setErrors] = useState({});
 
-  // maneja el envio de formularios
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const {TodoNombre, TodoMensaje, TodoEmail, TodoCheck} = todo;
-    if (!TodoNombre.trim() || !TodoMensaje.trim() || !validarEmail(TodoEmail) || !TodoCheck) {
-      alert("Por favor corrige los errores antes de enviar.");
-      return;
+  const onSubmit = async (values, { setSubmitting, setErrors, resetForm }) => {
+    try {
+      await setTodo(values);
+      console.log("Formulario enviado");
+      resetForm();
+    } catch (error) {
+      if (error.code === "auth/invalid-credential")
+        return setErrors({ credentials: "Credenciales inválidas" });
+    } finally {
+      setSubmitting(false);
     }
-    console.log('Datos del formulario:', todo);
-    setTodo(estadoInicial);
-    setErrors({});
   };
 
-  // "agrega" los cambios al todo dependiendo si es text o checkbox
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setTodo({
-      ...todo,
-      [name]: type === 'checkbox' ? checked : value
-    });
-    validateField(name, type === 'checkbox' ? checked : value);
-  };
-
-  // valida cada campo y definee mensaje de error
-  const validateField = (name, value) => {
-    let errorMessage = '';
-    switch (name) {
-      case 'TodoEmail':
-        if (!value) {
-          errorMessage = 'El email es requerido.';
-        } else if (!validarEmail(value)) {
-          errorMessage = 'Por favor, introduce un email válido.';
-        }
-        break;
-      case 'TodoNombre':
-        if (!value.trim()) {
-          errorMessage = 'El nombre no puede estar vacío.';
-        }
-        break;
-      case 'TodoMensaje':
-        if (!value.trim()) {
-          errorMessage = 'El mensaje no puede estar vacío.';
-        }
-        break;
-      default:
-        break;
-    }
-
-    setErrors(prevErrors => ({
-      ...prevErrors,
-      [name]: errorMessage
-    }));
-  };
-
-  // valida el formato de email
-  const validarEmail = (email) => {
-    const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-    return formatoEmail.test(email);
-  };
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|es)$/,
+      'El correo debe tener un formato correcto'
+    )
+    .required('El correo electrónico es obligatorio'),
+    name: Yup.string().trim().required("El campo nombre es requerido"),
+    message: Yup.string().trim().required("El campo mensaje es requerido"),
+    acceptTerms: Yup.boolean().oneOf([true], 'Debes aceptar los términos y condiciones'),
+  });
 
   return (
-    <section className="contenedorFormulario">
-      <h2>¿Cómo podemos ayudarte?</h2>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <label htmlFor="TodoNombre">Nombre:</label>
-          <input 
-            type="text" 
-            name="TodoNombre" 
-            value={todo.TodoNombre}
-            onChange={handleChange}
-            required 
-          />
-          {errors.TodoNombre && <span className="error">{errors.TodoNombre}</span>}
-
-          <label htmlFor="TodoEmail">Email:</label>
-          <input 
-            type="email" 
-            name="TodoEmail" 
-            value={todo.TodoEmail}
-            onChange={handleChange}
-            required 
-          />
-          {errors.TodoEmail && <span className="error">{errors.TodoEmail}</span>}
-          
-          <label htmlFor="TodoMensaje">Escríbenos:</label>
-          <textarea 
-            name="TodoMensaje" 
-            rows="8" 
-            value={todo.TodoMensaje}
-            onChange={handleChange}
-            required
-          ></textarea>
-          {errors.TodoMensaje && <span className="error">{errors.TodoMensaje}</span>}
-          
-          <label>
-            <input 
-              type="checkbox" 
-              name="TodoCheck" 
-              checked={todo.TodoCheck}
+    <Box sx={{ mt: "1rem", maxWidth: "400px", textAlign: "center" }}>
+      <Avatar sx={{ mx: "auto", bgcolor: "#111" }}>
+        <QuestionAnswerIcon />
+      </Avatar>
+      <Typography variant='h5' component="h1">
+        Contacto
+      </Typography>
+      <Formik
+        initialValues={estadoInicial}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {({ values, handleChange, handleSubmit, isSubmitting, handleBlur, errors, touched }) => (
+          <Box sx={{ mt: 1 }} component={'form'} onSubmit={handleSubmit}>
+            <TextField
+              type='text'
+              placeholder='Introduce tu nombre'
+              value={values.name}
               onChange={handleChange}
-              required
-            /> He leído y acepto la política de privacidad.
-          </label>
-        </fieldset>
-        
-        <button className='enviarContacto' type="submit">Enviar</button>
-      </form>
-    </section>
+              name='name'
+              onBlur={handleBlur}
+              id='name'
+              label='Nombre'
+              fullWidth
+              sx={{ mb: 3 }}
+              error={errors.name && touched.name}
+              helperText={errors.name && touched.name && errors.name}
+            />
+            <TextField
+              type='email'
+              placeholder='Introduce tu email'
+              value={values.email}
+              onChange={handleChange}
+              name='email'
+              onBlur={handleBlur}
+              id='email'
+              label='Email'
+              fullWidth
+              sx={{ mb: 3 }}
+              error={errors.email && touched.email}
+              helperText={errors.email && touched.email && errors.email}
+            />
+            <TextField
+              type='text'
+              placeholder='Escribe tu mensaje aquí'
+              value={values.message}
+              onChange={handleChange}
+              name='message'
+              onBlur={handleBlur}
+              id='message'
+              label='Mensaje'
+              multiline
+              rows={4}
+              fullWidth
+              sx={{ mb: 3 }}
+              error={errors.message && touched.message}
+              helperText={errors.message && touched.message && errors.message}
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={values.acceptTerms}
+                  onChange={handleChange}
+                  name="acceptTerms"
+                />
+              }
+              label="Acepto los términos y condiciones"
+            />
+            {errors.acceptTerms && touched.acceptTerms && (
+              <Typography color="error" variant="caption" display="block">
+                {errors.acceptTerms}
+              </Typography>
+            )}
+            <LoadingButton
+              variant="contained"
+              type="submit"
+              disabled={isSubmitting}
+              loading={isSubmitting}
+              fullWidth
+              sx={{ mb: 3 }}
+            >
+              Enviar
+            </LoadingButton>
+            {errors.credentials && <p>{errors.credentials}</p>}
+          </Box>
+        )}
+      </Formik>
+    </Box>
   );
 };
 
