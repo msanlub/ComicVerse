@@ -1,8 +1,8 @@
 import Evento from './Evento'
 import "../../css/components/ListaEventos.css"
+import Pagination from '../Pagination'
 
-const ListaEventos = ({eventos}) => {
-    //console.log('eventos recibidos: ', eventos);
+const ListaEventos = ({ eventos, currentPage, eventsPerPage, totalEvents, onPageChange }) => {
   return (
     <section className="lista-eventos-container">
         <section className="lista-eventos">
@@ -14,6 +14,12 @@ const ListaEventos = ({eventos}) => {
               descripcion={evento.description}
             />
           ))}
+          <Pagination 
+            currentPage={currentPage}
+            itemsPerPage={eventsPerPage}
+            totalItems={totalEvents}
+            onPageChange={onPageChange}
+          />
         </section>
       </section>
   )

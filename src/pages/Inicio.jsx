@@ -8,6 +8,11 @@ const Inicio = () => {
   const [eventsData, setEventsData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Estado para paginación
+  const [currentPage, setCurrentPage] = useState(1);
+  const eventsPerPage = 3;
+
   const apiKey = import.meta.env.VITE_MARVEL_API_KEY;
 
   useEffect(() => {
@@ -40,6 +45,14 @@ const Inicio = () => {
     fetchData();
   }, []);
 
+  // Calcular los índices de los eventos a mostrar
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = eventsData.slice(indexOfFirstEvent, indexOfLastEvent);
+
+  // Función para cambiar de página
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -52,7 +65,13 @@ const Inicio = () => {
         <h1>Cómics</h1>
         <ListaComics comics={comicsData} />
         <h1>Eventos</h1>
-        <ListaEventos eventos={eventsData} />
+        <ListaEventos 
+          eventos={currentEvents} 
+          currentPage={currentPage}
+          eventsPerPage={eventsPerPage}
+          totalEvents={eventsData.length}
+          onPageChange={handlePageChange}
+        />
       </section>
     </div>
   );

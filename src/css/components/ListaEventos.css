@@ -1,11 +1,26 @@
-.lista-eventos-container {
-    width: 100%;
-    overflow-x: auto;
-    padding: 20px 0;
-  }
-  
-  .lista-eventos {
-    display: flex;
-    gap: 28px; /* Espacio entre las tarjetas de cómics */
-    padding: 0 8px;
-  }
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination .page-item {
+  margin: 0 5px;
+}
+
+.pagination .page-link {
+  padding: 10px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination .page-link:hover {
+  background-color: #0056b3;
+}
+
+.pagination .active .page-link {
+  background-color: #0056b3;
+}
