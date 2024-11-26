@@ -12,6 +12,15 @@ import Contacto from "../pages/Contacto";
 import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
 import Registro from "../pages/Registro";
+import { lazy } from 'react'
+
+// Lazy loading
+const artista = lazy(() => import("../pages/Artista"));
+const evento = lazy(() => import("../pages/Evento"));
+const comic = lazy(() => import("../pages/Comic"));
+const configUser = lazy(() => import("../pages/ConfigUsuario"));
+const contacto = lazy(() => import("../pages/Contacto"));
+const personaje = lazy(() => import("../pages/Personaje"));
 
 export const router = createBrowserRouter([
     {

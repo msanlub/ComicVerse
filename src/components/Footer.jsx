@@ -1,22 +1,19 @@
-import { Link } from 'react-router-dom';
+import '../sass/layout/_footer.sass';
 import logo from '../assets/logoFooter.png';
-import '../css/components/Footer.css'; 
+import { NavLink } from 'react-router-dom';
+
 
 const Footer = () => {
   return (
-    <section className='footer'>
-        <nav className='navbarfooter'>
-            <ul>
-                <li>Política de Privacidad</li>
-                <li>Cookies</li>
-                <li>Aviso legal</li>
-                <li><Link to='/contacto' >Contacto</Link></li>
-            </ul>
-        </nav>
-        <section className='logoFooter'>
-            <img src={logo} alt="LogoFooter" />
-        </section>
-    </section>
+    <footer className='footer'>
+      <nav className='footer__menu'>
+        <NavLink className='menu__opcionfoot' to='' >Política de privacidad</NavLink>
+        <NavLink className='menu__opcionfoot' to='' >Cookies</NavLink>
+        <NavLink className='menu__opcionfoot' to='' >Aviso Legal</NavLink>
+        <NavLink className='menu__opcionfoot' to='/contacto' >Contacto</NavLink>
+      </nav>    
+      <img className='footer__logo' src={logo} alt="LogoFooter" />
+    </footer>
   )
 }
 

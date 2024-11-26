@@ -1,11 +1,12 @@
 import Comic from './Comic'; 
-import '../../css/components/ListaComics.css';
+import '../../sass/components/_listaComic.sass';
+
 
 const ListaComics = ({ comics }) => {
   //console.log(comics)
     return (
-      <section className="lista-comics-container">
-        <section className="lista-comics">
+      <section className="container__listaComics">
+        <section className="listaComics">
           {comics.map((comic) => (
             <Comic 
               key={comic.id}

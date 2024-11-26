@@ -1,13 +1,11 @@
-import '../../css/components/Comic.css';
+import '../../sass/components/_cardComic.sass';
 
 const Comic = ({ id, imagen, titulo}) => {
   //console.log( titulo, isbn , imagen)
   return (
-    <section className={`contenedor-comic-${id}`}>
-      <section className='imagenComic'>
-        <img src={imagen} alt={`Portada de ${titulo}`} />
-      </section>
-      <section className='infoComic'>
+    <section className='contenedor__comic'>
+      <img className='comic__imagen' src={imagen} alt={`Portada de ${titulo}`} />
+      <section className='comic__info'>
         <h1>{titulo}</h1>   
       </section>
     </section>

@@ -1,13 +1,13 @@
-
+import '../../sass/components/_cardEvento.sass';
 
 const Evento = ({id, titulo,descripcion, imagenEvento}) => {
   //console.log(titulo,descripcion)
   return (
-    <section className={`container-evento-${id}`}>
-        <section className='img-evento' >
+    <section className='container__eventos'>
+        <section className='evento__imagen' >
             <img src={imagenEvento} />
         </section>
-        <section className='info-evento'>
+        <section className='evento__info'>
             <h1>{titulo}</h1>
             <p>{descripcion}</p>
         </section>

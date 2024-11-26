@@ -1,4 +1,4 @@
-import '../css/components/Comic.css';
+
 
 const Comic = () => {
   return (

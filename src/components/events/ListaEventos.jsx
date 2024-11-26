@@ -1,11 +1,12 @@
+import '../../sass/components/_listaEvento.sass';
 import Evento from './Evento'
-import "../../css/components/ListaEventos.css"
+
 import Pagination from '../Pagination'
 
 const ListaEventos = ({ eventos, currentPage, eventsPerPage, totalEvents, onPageChange }) => {
   return (
-    <section className="lista-eventos-container">
-        <section className="lista-eventos">
+    <section className="container__listaEventos">
+        <section className="listaEventos">
           {eventos.map((evento) => (
             <Evento 
               key={evento.id}

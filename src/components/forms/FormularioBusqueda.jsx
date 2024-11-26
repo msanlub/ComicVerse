@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const BuscadorComics = ({ onSearch }) => {
   const [characters, setCharacters] = useState('');
@@ -7,39 +7,16 @@ const BuscadorComics = ({ onSearch }) => {
   const [orderBy, setOrderBy] = useState('');
   const [noVariants, setNoVariants] = useState(true);
 
-  useEffect(() => {
-    const fetchComics = async () => {
-      // const apiKey = import.meta.env.VITE_API_KEY;
-      const apiKey ='cee90f8ea5b8601ab4a8f5d0c12a47a2';
-      const baseUrl = 'https://gateway.marvel.com/v1/public/comics';
-
-      let url = `${baseUrl}?apikey=${apiKey}`;
-      if (characters) url += `&characters=${characters}`;
-      if (creators) url += `&creators=${creators}`;
-      if (format) url += `&format=${format}`;
-      if (orderBy) url += `&orderBy=${orderBy}`;
-      if (noVariants) url += '&noVariants=true';
-
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        onSearch(data.data.results);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    const debounceTimer = setTimeout(() => {
-      fetchComics();
-    }, 500);
-
-    return () => clearTimeout(debounceTimer);
-  }, [characters, creators, format, orderBy, noVariants, onSearch]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    onSearch({
+      characters,
+      creators,
+      format,
+      orderBy,
+      noVariants: noVariants ? 'true' : 'false'
+    });
   };
-
 
   return (
     <form onSubmit={handleSubmit}>

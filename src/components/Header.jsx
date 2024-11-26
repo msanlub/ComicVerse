@@ -1,5 +1,7 @@
+import '../sass/layout/_header.sass';
+
 import logo from '../assets/logoHeader.png';
-import '../css/components/Header.css'; 
+
 import { NavLink} from "react-router-dom";
 import { UserContext } from '../context/UserContext'
 import { useContext } from "react";
@@ -14,25 +16,27 @@ const Header = () => {
     }
 
     return (
-        <nav>
-            <img src={logo} alt='logo'/>
-            <NavLink to="/">Inicio  |</NavLink>
+        <header className='header'>
+            <img src={logo} className='header__logo' alt="logotipo de ComicVerse"/>
+            <nav className="header__menu">
+                <NavLink className='menu__opcion' to="/">Inicio</NavLink>
+                {
+                    user && <NavLink  className='menu__opcion' to="/usuario">Usuario</NavLink>
+                }
+                {
+                    user ? (
+                        <NavLink className='menu__opcion' onClick={handleLogout}>Cerrar sesión</NavLink>
+                    ):(
+                        // englobar en un componente 
+                        <>
+                            <NavLink className='menu__opcion' to="/login">Login</NavLink>
+                            <NavLink className='menu__opcion' to="/registro">Registro</NavLink>
+                        </>
+                    )
+                }
+            </nav>
 
-            {
-                user && <NavLink to="/usuario">Usuario  |</NavLink>
-            }
-            {
-                user ? (
-                    <NavLink onClick={handleLogout}>Cerrar sesión</NavLink>
-                ):(
-                    // englobar en un componente 
-                    <>
-                        <NavLink to="/login">Login  |</NavLink>
-                        <NavLink to="/registro">Registro  |</NavLink>
-                    </>
-                )
-            }
-        </nav>
+        </header>
     );
 };
 
