@@ -7,6 +7,10 @@ import { UserContext } from '../context/UserContext'
 import { useContext } from "react";
 import { logOut } from "../config/Firebase";
 
+/**
+ * Componente header o cabecera de página
+ * @returns Cabecera de página (logo,menú)
+ */
 const Header = () => {
     const {user, setUser} = useContext(UserContext)
     

@@ -123,14 +123,17 @@ src/
 |   |-- eventos/
 |   |   |-- Evento.jsx
 |   |   |-- ListaEventos.jsx
-|   |-- ArtistaComic.jsx
-|   |-- Comic.jsx
+|   |-- comic/
+|   |   |-- Comic.jsx
+|   |   |-- ListaComics.jsx
+|   |-- artista/
+|   |   |-- ArtistaComic.jsx
+|   |   |-- ListaArtistaComic.jsx
+|   |-- forms/
+|   |   |-- FormularioContacto.jsx
+|   |   |-- FormularioBusqueda.jsx
 |   |-- Footer.jsx
-|   |-- FormularioContacto.jsx
-|   |-- FormularioBusqueda.jsx
 |   |-- Header.jsx
-|   |-- ListaArtistaComic.jsx
-|   |-- ListaComics.jsx
 |-- pages/
 |   |-- Artista.jsx
 |   |-- Comic.jsx
@@ -142,6 +145,7 @@ src/
 |   |-- Personaje.jsx
 |   |-- Usuario.jsx
 |-- layouts/
+|   |-- LayoutPrivate.jsx
 |   |-- LayoutPublic.jsx
 |-- router/
 |   |-- index.jsx
@@ -151,26 +155,35 @@ src/
 ```
 
 ### Assets: 
-Contiene recursos estáticos como iconos.
+Contiene recursos estáticos como iconos e imágenes.
 
 ### Components: 
 Almacena componentes reutilizables de React.
 - **eventos:** Componentes específicos para la funcionalidad de eventos.
-- Otros componentes como Comic, Footer, Header, y las Listas de comics, artistas y eventos, los cuales están formados por los componentes Comic, Evento, Artista que son reutilizables casi en todas las páginas de la web.
-- Formularios para ser más fácil el manejo del formulario y luego llamarlo desde las páginas que los integren.
+- **comic:** Componentes específicos para la funcionalidad de comics.
+- **artista:** Componentes específicos para la funcionalidad de creadores.
+- **forms:** Componentes específicos para la funcionalidad de formularios.
+- Otros componentes como Footer y Header que se usan en todas las páginas de la web.
 ### Pages: 
 Contiene componentes que representan páginas completas de la aplicación, las cuales llaman a componentes generales.
 ### Layouts: 
-Incluye componentes de diseño, como LayoutPublic.jsx, contiene la estructura común para las páginas públicas.
+Incluye componentes de estructura:
+
+- LayoutPublic.jsx, contiene la estructura común para las páginas públicas.
+
+- LayourPrivate.jsx, se encarga del manejo de la parte sólo visible para el usuario.
 ### Router: 
 Contiene la configuración del enrutador de la aplicación.
 ### Styles: 
 Destinado a archivos de estilos de las páginas y componentes.
 ### Main.jsx: 
-Punto de entrada principal de la aplicación React, contiene el enrutamiento y la página de inicio como raíz del proyecto como consecuencia.
+Punto de entrada principal de la aplicación React..
 
 ## 🔗 Enlaces de interés
 
 [Documentación API Marvel](https://developer.marvel.com/docs)
 
 [Enlace a prototipo Figma](https://www.figma.com/design/OAOENSn9ywu4vSe2v8AA9P/ComicVerse?node-id=281-2&node-type=canvas&t=4doWAGlUvXtGJVqN-0)
+
+
+[Integración de la Api y comunicación asíncrona](/integracionApi.md)

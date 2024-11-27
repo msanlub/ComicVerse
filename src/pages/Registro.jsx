@@ -8,10 +8,11 @@ import { Avatar, Box, Button, TextField, Typography } from '@mui/material'
 import LoginIcon from '@mui/icons-material/Login';
 import { LoadingButton } from '@mui/lab'
 
+/**
+ * Página de registro, permite al usuario registrarse mediante formulario
+ * @returns Una vez registrado, abre la página personal del usuario
+ */
 const Registro = () => {
-    // const[email,setEmail] = useState("test@test.com")
-    // const[password,setPass]= useState("123456")
-
     const {user} = useContext(UserContext);
 
     const navigate = useNavigate()

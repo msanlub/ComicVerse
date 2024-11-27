@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import ListaEventos from "../components/events/ListaEventos";
 import ListaComics from "../components/comics/ListaComics";
-import FormularioBusqueda from "../components/forms/FormularioBusqueda"
 
+/**
+ * Página principal de la app, maneja los fetchApi para comics y eventos y paginación de eventos
+ * @returns bienvenida, listado de comics y listado de eventos
+ */
 const Inicio = () => {
   const [comicsData, setComicsData] = useState([]);
   const [eventsData, setEventsData] = useState([]);
@@ -16,19 +19,10 @@ const Inicio = () => {
   // defino la apikey
   const apiKey = import.meta.env.VITE_MARVEL_API_KEY;
 
-  // FETCH PARA COMICS (según filtrado o sin filtros)
-  const fetchComics = async (searchParams = {}) => {
-    setLoading(true);
-    setError(null);
+  // FETCH PARA COMICS
+  const fetchComics = async () => {
     try {
       let url = `https://gateway.marvel.com/v1/public/comics?apikey=${apiKey}`;
-
-      // Si no hay parámetros de búsqueda, obtenemos todos los cómics
-      if (Object.keys(searchParams).length > 0) {
-        Object.entries(searchParams).forEach(([key, value]) => {
-          if (value) url += `&${key}=${value}`;
-        });
-      }
 
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Error fetching comics: ${response.status}`);
@@ -52,18 +46,15 @@ const Inicio = () => {
       setEventsData(result.data.results);
     } catch (err) {
       setError(err.message);
+    }finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchEvents();
-    fetchComics(); // Llama a fetchComics sin filtros para obtener todos los cómics
+    fetchComics(); 
   }, []);
-
-  // Busqueda con filtros
-  const handleSearch = (searchParams) => {
-    fetchComics(searchParams); 
-  };
 
   // Calcular los índices de los eventos a mostrar por pagina
   const indexOfLastEvent = currentPage * eventsPerPage;
@@ -75,7 +66,7 @@ const Inicio = () => {
  
 
   // mientras carga y si hay error en cada una de las llamadas a la api
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <p>Cargando los mejores comics...</p>;
   if (error) return <p>Error: {error}</p>;
 
   
@@ -83,7 +74,6 @@ const Inicio = () => {
     <section className='container__listados'>
       <h1>Encuentra los comics de tus personajes favoritos</h1>
 
-      <FormularioBusqueda onSearch={handleSearch} />
       <section className="listado__comics">
         <h1>Cómics</h1>
         <ListaComics comics={comicsData} />

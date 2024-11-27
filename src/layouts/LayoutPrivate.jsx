@@ -6,7 +6,6 @@ const LayoutPrivate = () => {
     const {user} = useContext(UserContext)
     const navigate = useNavigate()
 
-
     return (
         <div>
             {

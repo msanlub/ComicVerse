@@ -5,6 +5,10 @@ import { Avatar, Box, TextField, Typography, FormControlLabel, Checkbox } from '
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import { LoadingButton } from '@mui/lab';
 
+/**
+ * Componente formulario para contacto
+ * @returns los parámetros indicados por el usuario
+ */
 const FormularioContacto = () => {
   const estadoInicial = {
     email: '',
@@ -14,13 +18,13 @@ const FormularioContacto = () => {
   };
 
   const [todo, setTodo] = useState(estadoInicial);
-  const [errors, setErrors] = useState({});
+  
 
   const onSubmit = async (values, { setSubmitting, setErrors, resetForm }) => {
     try {
       await setTodo(values);
-      console.log("Formulario enviado");
-      resetForm();
+      console.log(values);
+      resetForm(estadoInicial);
     } catch (error) {
       if (error.code === "auth/invalid-credential")
         return setErrors({ credentials: "Credenciales inválidas" });
@@ -29,6 +33,7 @@ const FormularioContacto = () => {
     }
   };
 
+  // validaciones de correo,nombre,mensaje y checkbox
   const validationSchema = Yup.object().shape({
     email: Yup.string()
     .matches(

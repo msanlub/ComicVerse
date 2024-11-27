@@ -12,8 +12,11 @@ import '@fontsource/alumni-sans/700.css';
 import UserProvider from './context/UserContext';
 import { CssBaseline } from '@mui/material';
 
+/**
+ * Configura y renderiza la aplicación con router y un proveedor de contexto para la gestión de usuarios
+ */
 createRoot(document.getElementById('root')).render(
-  <>
+    <>
         <CssBaseline/>
         <UserProvider >
             <RouterProvider router={router} />

@@ -1,5 +1,10 @@
 import '../../sass/components/_cardEvento.sass';
 
+/**
+ * Componente card de cada evento
+ * @param { id, titulo,descripcion, imagenEvento } 
+ * @returns estructura de evento
+ */
 const Evento = ({id, titulo,descripcion, imagenEvento}) => {
   //console.log(titulo,descripcion)
   return (

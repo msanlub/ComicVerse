@@ -2,6 +2,10 @@
 import { Link,useRouteError } from 'react-router-dom';
 import notFoundImage from '../assets/notFoundDef.png';
 
+/**
+ * Página de error notFound
+ * @returns imágen notFound
+ */
 const NotFound = () => {
   const error = useRouteError()
   return (

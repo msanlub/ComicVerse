@@ -8,10 +8,11 @@ import { Avatar, Box, Button, TextField, Typography } from '@mui/material'
 import LoginIcon from '@mui/icons-material/Login';
 import { LoadingButton } from '@mui/lab'
 
+/**
+ * Página de login, validaciones de autorización de usuario
+ * @returns una vez autorizado correctamente abre la página del usuario directamente
+ */
 const Login = () => {
-    // const[email,setEmail] = useState("test@test.com")
-    // const[password,setPass]= useState("123456")
-
     const {user} = useContext(UserContext);
 
     const navigate = useNavigate()

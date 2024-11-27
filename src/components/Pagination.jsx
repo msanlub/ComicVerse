@@ -1,5 +1,9 @@
 
-
+/**
+ * Devuelve el cálculo de las páginas y cuantos items van por página
+ * @param { currentPage, itemsPerPage, totalItems, onPageChange } 
+ * @returns 
+ */
 const Pagination = ({ currentPage, itemsPerPage, totalItems, onPageChange }) => {
   const pageNumbers = [];
 

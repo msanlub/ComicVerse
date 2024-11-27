@@ -2,7 +2,10 @@ import '../sass/layout/_footer.sass';
 import logo from '../assets/logoFooter.png';
 import { NavLink } from 'react-router-dom';
 
-
+/**
+ * Componente Footer o pie de página
+ * @returns enlaces de footer
+ */
 const Footer = () => {
   return (
     <footer className='footer'>

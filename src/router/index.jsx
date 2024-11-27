@@ -22,6 +22,9 @@ const configUser = lazy(() => import("../pages/ConfigUsuario"));
 const contacto = lazy(() => import("../pages/Contacto"));
 const personaje = lazy(() => import("../pages/Personaje"));
 
+/**
+ *  Manejo del enrutamiento de las páginas de la app
+ */
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -61,7 +64,7 @@ export const router = createBrowserRouter([
                   element: <Usuario />,
               },
           ],
-      },
+        },
         {
           path: "/personaje",
           element: <Personaje />,

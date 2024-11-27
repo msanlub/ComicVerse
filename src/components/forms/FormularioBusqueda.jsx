@@ -1,8 +1,12 @@
 import { useState } from 'react';
 
+/**
+ * Devuelve la búsqueda de los filtros que ingresa el usuario de los comics para personaje,eventos o creadores
+ * @param {onSearch}
+ * @returns 
+ */
 const BuscadorComics = ({ onSearch }) => {
   const [characters, setCharacters] = useState('');
-  const [creators, setCreators] = useState('');
   const [format, setFormat] = useState('');
   const [orderBy, setOrderBy] = useState('');
   const [noVariants, setNoVariants] = useState(true);
@@ -11,7 +15,6 @@ const BuscadorComics = ({ onSearch }) => {
     e.preventDefault();
     onSearch({
       characters,
-      creators,
       format,
       orderBy,
       noVariants: noVariants ? 'true' : 'false'
@@ -24,14 +27,7 @@ const BuscadorComics = ({ onSearch }) => {
         type="text"
         value={characters}
         onChange={(e) => setCharacters(e.target.value)}
-        placeholder="Buscar por personaje/es"
-      />
-
-      <input
-        type="text"
-        value={creators}
-        onChange={(e) => setCreators(e.target.value)}
-        placeholder="Buscar por creador/es"
+        placeholder="Buscar por personaje"
       />
 
       <select value={format} onChange={(e) => setFormat(e.target.value)}>

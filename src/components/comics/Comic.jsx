@@ -1,5 +1,11 @@
 import '../../sass/components/_cardComic.sass';
 
+
+/**
+ * Componente card de cada comic
+ * @param { id, imagen, titulo } 
+ * @returns estructura de comic
+ */
 const Comic = ({ id, imagen, titulo}) => {
   //console.log( titulo, isbn , imagen)
   return (
