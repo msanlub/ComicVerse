@@ -1,4 +1,4 @@
-import '../../sass/components/_cardComic.sass';
+//import '../../sass/components/_cardComic.sass';
 
 
 /**

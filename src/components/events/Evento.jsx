@@ -1,4 +1,4 @@
-import '../../sass/components/_cardEvento.sass';
+//import '../../sass/components/_cardEvento.sass';
 
 /**
  * Componente card de cada evento

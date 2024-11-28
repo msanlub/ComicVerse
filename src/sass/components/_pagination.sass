@@ -1,4 +1,6 @@
 // Pagination.sass
+@import '../utilities/variables.sass'
+@import '../base/typo.sass'
 
 .container__pagination
     width: 100%
@@ -8,13 +10,14 @@
 
 .pagination__list
     display: flex
-    gap: 8px
+    gap: 16px
      
 .item__button
-    background-color: #A62940 
+    background-color: $primary-color
     color: white
+    @include link-text(600)
     border: 2px 
-    border-radius: 4px
+    border-radius: 30px
     padding: 10px 15px
     cursor: pointer
     transition: background-color 0.3s, transform 0.2s
@@ -22,8 +25,8 @@
 
 /* Efecto hover */
 .item__button:hover 
-    background-color: #42101a
-    color: #cd3551
+    background-color: $primary-color-dark
+    color: $secondary-color
     transform: scale(1.05)
 
 

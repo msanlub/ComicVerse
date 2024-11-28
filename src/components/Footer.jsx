@@ -9,11 +9,22 @@ import { NavLink } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className='footer'>
-      <nav className='footer__menu'>
-        <NavLink className='menu__opcionfoot' to='' >Política de privacidad</NavLink>
-        <NavLink className='menu__opcionfoot' to='' >Cookies</NavLink>
-        <NavLink className='menu__opcionfoot' to='' >Aviso Legal</NavLink>
-        <NavLink className='menu__opcionfoot' to='/contacto' >Contacto</NavLink>
+      <nav >
+        <ul className='footer__menu'>
+          <li className='menu__opcionfoot'>
+            <NavLink  to='' >Política de privacidad</NavLink>
+          </li>
+          <li className='menu__opcionfoot'> 
+            <NavLink  to='' >Cookies</NavLink>
+          </li>
+          <li className='menu__opcionfoot'> 
+            <NavLink  to='' >Aviso Legal</NavLink>
+          </li>
+          <li className='menu__opcionfoot'> 
+            <NavLink  to='/contacto' >Contacto</NavLink>
+          </li>
+        </ul>
+        
       </nav>    
       <img className='footer__logo' src={logo} alt="LogoFooter" />
     </footer>

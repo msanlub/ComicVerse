@@ -1,4 +1,4 @@
-import '../../sass/components/_listaEvento.sass';
+//import '../../sass/components/_listaEvento.sass';
 import Evento from './Evento'
 import Pagination from '../Pagination'
 

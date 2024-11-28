@@ -1,0 +1,26 @@
+$themes: (
+  light: (
+    background-color: $background-light,
+    text-color: $text-color-light,
+    border-color: $border-color-light
+  ),
+  dark: (
+    background-color: $background-dark,
+    text-color: $text-color-dark,
+    border-color: $border-color-dark
+  )
+);
+
+@mixin theme-aware($key, $color-map: $themes) {
+  @each $theme, $colors in $color-map {
+    [data-theme="#{$theme}"] & {
+      #{$key}: map-get($colors, $key);
+    }
+  }
+}
+
+// Uso
+body {
+  @include theme-aware('background-color');
+  @include theme-aware('color', $themes);
+}

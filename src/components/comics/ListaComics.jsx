@@ -1,5 +1,5 @@
 import Comic from './Comic'; 
-import '../../sass/components/_listaComic.sass';
+//import '../../sass/components/_listaComic.sass';
 
 /**
  * Componente que devuelve el listado de comics de la api

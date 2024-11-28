@@ -1,15 +1,21 @@
 // Card evento
+@import '../utilities/variables.sass'
+@import '../base/typo.sass'
+
 .card__evento 
   display: flex 
   flex-direction: column
   width: 24rem
-  border-radius: 8px 
-  margin: 16px 8px // Margen superior e inferior
+  height: 40rem
+  background-color: $card-color
+  border-radius: $border-radius
+  margin: 16px 8px
   transition: transform 0.2s // Transición suave al hacer hover
-  border: 3px solid #000 
+  border: $border-light 
+  
 
   &:hover 
-    transform: scale(1.02) // Aumentar ligeramente el tamaño 
+    transform: scale(1.02) // Aumentar el tamaño 
 
 
 .evento__imagen 
@@ -21,13 +27,16 @@
 
 .evento__info 
   padding: 16px // Espaciado interno
-  background-color: #f9f9f9
+  overflow-y: auto
+  scrollbar-width: thin
+  scrollbar-color: #E08D9C #e7e7e7
 
   h1 
-    font-size: 18px 
+    @include title-text(600)
     color: #000 
     margin: 0
+    text-align: center
 
   p 
-    font-size: 14px 
     color: #666 
+    @include description-text

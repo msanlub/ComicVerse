@@ -1,4 +1,4 @@
-import '../sass/components/_Pagination.sass';
+//import '../sass/components/_Pagination.sass';
 
 
 /**

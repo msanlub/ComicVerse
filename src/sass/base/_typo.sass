@@ -1,0 +1,38 @@
+// typo.sass
+
+// Importar las fuentes (asegúrate de tenerlas disponibles en tu proyecto)
+@import url('https://fonts.googleapis.com/css2?family=Allerta&family=Alumni+Sans:wght@400;600;700&display=swap')
+
+// Variables de fuentes
+$font-description: 'Allerta', sans-serif
+$font-title: 'Alumni Sans', sans-serif
+
+// Tamaños de fuente
+$font-size-description: 16px
+$font-size-title: 40px
+$font-size-link: 24px
+
+// Mixins para estilos de texto
+@mixin description-text
+  font-family: $font-description
+  font-size: $font-size-description
+
+@mixin title-text($weight: 600)
+  font-family: $font-title
+  font-weight: $weight
+  font-size: $font-size-title
+
+@mixin link-text($weight: 400)
+  font-family: $font-title
+  font-weight: $weight
+  font-size: $font-size-link
+
+// Ejemplos de uso
+//.description
+//  @include description-text
+
+//h1, h2, h3
+//  @include title-text(700)
+
+//a
+//  @include link-text(600)*/
