@@ -71,7 +71,7 @@ const Inicio = () => {
 
   
   return (
-    <section className='container__listados'>
+    <>
       <h1>Encuentra los comics de tus personajes favoritos</h1>
 
       <section className="listado__comics">
@@ -89,7 +89,7 @@ const Inicio = () => {
           onPageChange={handlePageChange}
         />
       </section>
-    </section>
+    </>
   );
 };
 

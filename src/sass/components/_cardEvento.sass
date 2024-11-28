@@ -1,35 +1,33 @@
-
-.container__eventos 
-  display: flex // Usar flexbox para alinear imagen y texto
+// Card evento
+.card__evento 
+  display: flex 
   flex-direction: column
-  border: 1px solid #ddd // Borde del evento
-  border-radius: 8px // Esquinas redondeadas
-  overflow: hidden // Ocultar contenido que sobresalga
+  width: 24rem
+  border-radius: 8px 
   margin: 16px 8px // Margen superior e inferior
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) // Sombra suave
   transition: transform 0.2s // Transición suave al hacer hover
-  border: 3px solid #000 // Borde del card
+  border: 3px solid #000 
 
   &:hover 
-    transform: scale(1.02) // Aumentar ligeramente el tamaño al pasar el mouse
+    transform: scale(1.02) // Aumentar ligeramente el tamaño 
 
 
 .evento__imagen 
-  width: auto // Ancho fijo para la imagen
-  height: auto// Mantener la proporción de la imagen
+  width: auto 
+  height: auto
   img 
-    width: 100% // Imagen ocupa todo el ancho del contenedor
-    height: auto // Mantener la proporción de la imagen
+    width: 100% 
+    height: auto 
 
 .evento__info 
   padding: 16px // Espaciado interno
-  background-color: #f9f9f9 // Color de fondo del área de información
+  background-color: #f9f9f9
 
   h1 
-    font-size: 18px // Tamaño de fuente del título
-    color: #333 // Color del texto del título
-    margin: 0 // Eliminar márgenes por defecto
+    font-size: 18px 
+    color: #000 
+    margin: 0
 
   p 
-    font-size: 14px // Tamaño de fuente de la descripción
-    color: #666 // Color del texto de la descripción
+    font-size: 14px 
+    color: #666 

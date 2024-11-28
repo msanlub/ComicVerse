@@ -23,21 +23,24 @@ const Header = () => {
         <header className='header'>
             <img src={logo} className='header__logo' alt="logotipo de ComicVerse"/>
             <nav className="header__menu">
-                <NavLink className='menu__opcion' to="/">Inicio</NavLink>
+                <ul>
+                <li><NavLink className='menu__opcion' to="/">Inicio</NavLink></li>
                 {
-                    user && <NavLink  className='menu__opcion' to="/usuario">Usuario</NavLink>
+                   user && <li><NavLink  className='menu__opcion' to="/usuario">Usuario</NavLink></li> 
                 }
                 {
                     user ? (
-                        <NavLink className='menu__opcion' onClick={handleLogout}>Cerrar sesión</NavLink>
+                        <li><NavLink className='menu__opcion' onClick={handleLogout}>Cerrar sesión</NavLink></li>
                     ):(
                         // englobar en un componente 
                         <>
-                            <NavLink className='menu__opcion' to="/login">Login</NavLink>
-                            <NavLink className='menu__opcion' to="/registro">Registro</NavLink>
+                            <li><NavLink className='menu__opcion' to="/login">Login</NavLink></li>
+                            <li><NavLink className='menu__opcion' to="/registro">Registro</NavLink></li>
                         </>
                     )
                 }
+                </ul>
+                
             </nav>
 
         </header>

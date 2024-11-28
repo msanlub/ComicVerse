@@ -1,3 +1,5 @@
+import '../sass/components/_Pagination.sass';
+
 
 /**
  * Devuelve el cálculo de las páginas y cuantos items van por página
@@ -12,11 +14,11 @@ const Pagination = ({ currentPage, itemsPerPage, totalItems, onPageChange }) => 
   }
 
   return (
-    <nav>
-      <ul className="pagination">
+    <nav className="container__pagination">
+      <ul className='pagination__list'>
         {pageNumbers.map(number => (
-          <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
-            <button onClick={() => onPageChange(number)} className="page-link">
+          <li key={number} className={`list__item ${currentPage === number ? 'active' : ''}`}>
+            <button onClick={() => onPageChange(number)} className="item__button">
               {number}
             </button>
           </li>
