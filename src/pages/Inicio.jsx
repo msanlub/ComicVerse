@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import GaleriaImagenes from "../components/GaleriaImagenes";
 import ListaEventos from "../components/events/ListaEventos";
 import ListaComics from "../components/comics/ListaComics";
+import { ThreeDots } from "react-loader-spinner";
 
 /**
  * Página principal de la app, maneja los fetchApi para comics y eventos y paginación de eventos
@@ -66,29 +68,46 @@ const Inicio = () => {
  
 
   // mientras carga y si hay error en cada una de las llamadas a la api
-  if (loading) return <p>Cargando los mejores comics...</p>;
+  //if (loading) return <p>Cargando los mejores comics...</p>;
   if (error) return <p>Error: {error}</p>;
 
   
   return (
     <>
       <h1>Encuentra los comics de tus personajes favoritos</h1>
+      <GaleriaImagenes />
 
-      <section className="listado__comics">
-        <h1>Cómics</h1>
-        <ListaComics comics={comicsData} />
-      </section>
-
-      <section className='listado__eventos'>
-        <h1>Eventos</h1>
-        <ListaEventos 
-          eventos={currentEvents} 
-          currentPage={currentPage}
-          eventsPerPage={eventsPerPage}
-          totalEvents={eventsData.length}
-          onPageChange={handlePageChange}
+      {loading ? (
+        <ThreeDots
+          visible={true}
+          height="80"
+          width="80"
+          color="#A62940"
+          radius="9"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          className='spinner'
         />
-      </section>
+      ) : (
+        <>
+          <section className="listado__comics">
+            <h1>CÓMICS</h1>
+            <ListaComics comics={comicsData} />
+          </section>
+
+          <section className='listado__eventos'>
+            <h1>EVENTOS</h1>
+            <ListaEventos 
+              eventos={currentEvents} 
+              currentPage={currentPage}
+              eventsPerPage={eventsPerPage}
+              totalEvents={eventsData.length}
+              onPageChange={handlePageChange}
+            />
+          </section>
+        </>
+      )}
     </>
   );
 };

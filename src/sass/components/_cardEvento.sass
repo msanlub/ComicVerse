@@ -1,7 +1,3 @@
-// Card evento
-@import '../utilities/variables.sass'
-@import '../base/typo.sass'
-
 .card__evento 
   display: flex 
   flex-direction: column
@@ -10,26 +6,34 @@
   background-color: $card-color
   border-radius: $border-radius
   margin: 16px 8px
-  transition: transform 0.2s // Transición suave al hacer hover
+  transition: transform 0.2s
   border: $border-light 
-  
 
   &:hover 
-    transform: scale(1.02) // Aumentar el tamaño 
+    transform: scale(1.02)
 
+    .evento__imagen
+      height: 40% // Reduce la altura de la imagen en hover
+
+    .evento__info
+      padding-top: 32px // Aumenta el padding superior en hover
 
 .evento__imagen 
-  width: auto 
-  height: auto
+  width: 100%
+  height: 100% //altura inicial 
+  transition: height 0.2s ease
   img 
     width: 100% 
-    height: auto 
+    height: 100%
+
 
 .evento__info 
-  padding: 16px // Espaciado interno
+  padding: 16px 
+  padding-top: 16px
   overflow-y: auto
   scrollbar-width: thin
   scrollbar-color: #E08D9C #e7e7e7
+  transition: padding-top 0.2s ease 
 
   h1 
     @include title-text(600)
