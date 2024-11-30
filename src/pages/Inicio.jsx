@@ -74,7 +74,7 @@ const Inicio = () => {
   
   return (
     <>
-      <h1>Encuentra los comics de tus personajes favoritos</h1>
+      <h1>ENCUENTRA LOS COMICS DE TUS PERSONAJES FAVORITOS</h1>
       <GaleriaImagenes />
 
       {loading ? (
@@ -92,7 +92,7 @@ const Inicio = () => {
       ) : (
         <>
           <section className="listado__comics">
-            <h1>CÓMICS</h1>
+            <h1>COMICS</h1>
             <ListaComics comics={comicsData} />
           </section>
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * Devuelve la búsqueda de los filtros que ingresa el usuario de los comics para personaje,eventos o creadores
@@ -6,30 +6,21 @@ import { useState } from 'react';
  * @returns 
  */
 const BuscadorComics = ({ onSearch }) => {
-  const [characters, setCharacters] = useState('');
   const [format, setFormat] = useState('');
   const [orderBy, setOrderBy] = useState('');
   const [noVariants, setNoVariants] = useState(true);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Llama a onSearch cada vez que cambie un filtro
+  useEffect(() => {
     onSearch({
-      characters,
       format,
       orderBy,
       noVariants: noVariants ? 'true' : 'false'
     });
-  };
+  }, [format, orderBy, noVariants]); 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={characters}
-        onChange={(e) => setCharacters(e.target.value)}
-        placeholder="Buscar por personaje"
-      />
-
+    <form>
       <select value={format} onChange={(e) => setFormat(e.target.value)}>
         <option value="">Formato de publicación</option>
         <option value="comic">Comic</option>
@@ -42,7 +33,7 @@ const BuscadorComics = ({ onSearch }) => {
 
       <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
         <option value="">Ordenar por</option>
-        <option value="FocDate">Fecha de publicación</option>
+        <option value="issueNumber">Número de emisión</option>
         <option value="onsaleDate">Fecha de venta</option>
         <option value="title">Título</option>
       </select>
@@ -65,8 +56,6 @@ const BuscadorComics = ({ onSearch }) => {
           Sin variantes
         </label>
       </section>
-
-      <button type="submit">Buscar</button>
     </form>
   );
 };

@@ -1,26 +1,44 @@
-// typo.sass
+// Importar las fuentes 
+@import url('https://fonts.googleapis.com/css2?family=Allerta&family=Bangers&display=swap')
 
-// Importar las fuentes (asegúrate de tenerlas disponibles en tu proyecto)
-@import url('https://fonts.googleapis.com/css2?family=Allerta&family=Alumni+Sans:wght@400;600;700&display=swap')
+// komigo fuente
+@font-face 
+    font-family: 'Komigo'
+    src: url('../../assets/fonts/Komigo3D-Regular.ttf') format('truetype')
+    font-weight: normal
+    font-style: normal
+
 
 // Variables de fuentes
 $font-description: 'Allerta', sans-serif
-$font-title: 'Alumni Sans', sans-serif
+$font-title-init: 'Komigo', 'Alumni Sans'
+$font-title: 'Bangers', sans-serif
 
 // Tamaños de fuente
 $font-size-description: 16px
+$font-size-title-init: 40px
 $font-size-title: 40px
 $font-size-link: 24px
+
+// Espaciado entre letras
+$letter-spacing-title: 0.3rem
 
 // Mixins para estilos de texto
 @mixin description-text
   font-family: $font-description
   font-size: $font-size-description
 
+@mixin title-text-init($weight: 800)
+  font-family: $font-title-init
+  font-weight: $weight
+  font-size: $font-size-title-init
+  letter-spacing: $letter-spacing-title 
+
 @mixin title-text($weight: 600)
   font-family: $font-title
   font-weight: $weight
   font-size: $font-size-title
+  letter-spacing: $letter-spacing-title 
 
 @mixin link-text($weight: 400)
   font-family: $font-title
@@ -35,4 +53,4 @@ $font-size-link: 24px
 //  @include title-text(700)
 
 //a
-//  @include link-text(600)*/
+//  @include link-text(600)

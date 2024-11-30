@@ -39,6 +39,7 @@ const Header = () => {
                         </>
                     )
                 }
+                <li className='menu__opcion'><NavLink  to="/busqueda">Buscar</NavLink></li>
                 </ul>
                 
             </nav>
