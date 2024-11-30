@@ -13,7 +13,7 @@ const Personaje = () => {
   const [eventsData, setEventsData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [hasCharacter, setHasCharacter] = useState(false); // Nuevo estado para controlar si hay un personaje
+  const [hasCharacter, setHasCharacter] = useState(false); 
 
   // Paginación y eventos por página
   const [currentPage, setCurrentPage] = useState(1);
