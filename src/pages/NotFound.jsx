@@ -1,5 +1,4 @@
-
-import { Link,useRouteError } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import notFoundImage from '../assets/notFoundDef.png';
 
 /**
@@ -7,15 +6,13 @@ import notFoundImage from '../assets/notFoundDef.png';
  * @returns imágen notFound
  */
 const NotFound = () => {
-  const error = useRouteError()
   return (
-    <div>NotFound
-      <p>{error.message}</p>
-      <p>{error.statusText}</p>
+    <div>
+      <h1>Pagina No Encontrada</h1>
       <img src={notFoundImage} alt="Not Found" />
-      <Link to = "/">Volver al inicio</Link>
+      <Link to="/">Volver al inicio</Link>
     </div>
-  )
+  );
 }
 
-export default NotFound
+export default NotFound;

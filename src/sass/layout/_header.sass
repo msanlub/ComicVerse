@@ -6,11 +6,19 @@
   display: flex
   justify-content: space-between
   align-items: center
+  position: relative
   padding: 0.2rem 1rem
-  //background-color: rgba($primary-color, 0.3)
-  background-blend-mode: overlay
-  background-image: url('../src/assets/fondoHeader2.jpg')
   
+.header__imagen
+  width: 100%
+  height: 6rem
+  position: absolute
+  left: 0
+  top: 0
+  object-fit: cover
+  z-index: -1
+  opacity: 0.3
+
 .header__logo
   height: 6rem
 

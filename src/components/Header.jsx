@@ -1,6 +1,7 @@
 import '../sass/layout/_header.sass';
 
 import logo from '../assets/logoHeader.png';
+import imagenFondo from '../assets/fondoHeader2.jpg';
 
 import { NavLink} from "react-router-dom";
 import { UserContext } from '../context/UserContext'
@@ -21,6 +22,7 @@ const Header = () => {
 
     return (
         <header className='header'>
+            <img src={imagenFondo} className='header__imagen' alt="imagen de fondo header"/>
             <img src={logo} className='header__logo' alt="logotipo de ComicVerse"/>
             <nav>
                 <ul className="header__menu">

@@ -1,11 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Inicio from "../pages/Inicio";
-import Artista from "../pages/Artista";
-import Comic from "../pages/Comic";
-import ConfigUsuario from "../pages/ConfigUsuario";
 import LayoutPublic from "../layouts/LayoutPublic";
 import LayoutPrivate from "../layouts/LayoutPrivate";
-import Evento from "../pages/Evento";
 import Personaje from "../pages/Personaje";
 import Usuario from "../pages/Usuario";
 import Contacto from "../pages/Contacto";
@@ -15,10 +11,7 @@ import Registro from "../pages/Registro";
 import { lazy } from 'react'
 
 // Lazy loading
-const artista = lazy(() => import("../pages/Artista"));
-const evento = lazy(() => import("../pages/Evento"));
-const comic = lazy(() => import("../pages/Comic"));
-const configUser = lazy(() => import("../pages/ConfigUsuario"));
+
 const contacto = lazy(() => import("../pages/Contacto"));
 const personaje = lazy(() => import("../pages/Personaje"));
 
@@ -29,23 +22,12 @@ export const router = createBrowserRouter([
     {
       path: "/",
       element: <LayoutPublic />,
+      errorElement: <NotFound />,
     //  aquí se muestran los hijos de la ruta indicada, lo que ira en outlet de layout, siendo inicio la raíz
       children: [
         {
           index: true,
           element: <Inicio />,
-        },
-        {
-          path: "/artista",
-          element: <Artista />,
-        },
-        {
-          path: "/comic",
-          element: <Comic />,
-        },
-        {
-          path: "/configusuario",
-          element: <ConfigUsuario />,
         },
         {
           path: "/login",
@@ -70,16 +52,12 @@ export const router = createBrowserRouter([
           element: <Personaje />,
         },
         {
-          path: "/evento",
-          element: <Evento />,
-        },
-        {
           path: "/contacto",
           element: <Contacto />,
         },
         {
-          path: "/*",
-          element: <NotFound />,
+          path: "*", 
+          element: <NotFound />, 
         },
       ],
     },
