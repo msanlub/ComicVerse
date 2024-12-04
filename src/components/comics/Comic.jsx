@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const Comic = ({ id, imagen, titulo }) => {
+const Comic = ({ id, imagen, titulo, onRemove }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const auth = getAuth();
@@ -29,9 +29,12 @@ const Comic = ({ id, imagen, titulo }) => {
     let favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`)) || [];
     
     if (isFavorite) {
-      favorites = favorites.filter(fav => fav.id !== id);
+      favorites = favorites.filter(fav => fav.id !== id); 
+      console.log("Eliminado de favoritos");
+      onRemove(id);
     } else {
-      favorites.push({ id, imagen, titulo }); 
+      favorites.push({ id, imagen, titulo });
+      console.log("Agregado a favoritos");
     }
 
     localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));

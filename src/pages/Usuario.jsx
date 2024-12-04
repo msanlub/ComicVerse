@@ -17,7 +17,6 @@ const Usuario = () => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        console.log(currentUser.uid);
         setUserName(currentUser.displayName || currentUser.email);
         
         // Cargar los cómics favoritos desde localStorage
@@ -58,6 +57,15 @@ const Usuario = () => {
     }
   };
 
+  const handleRemoveFavorite = (id) => {
+    const updatedFavorites = favoriteComics.filter(comic => comic.id !== id);
+    setFavoriteComics(updatedFavorites); // Actualiza el estado
+
+    // Actualiza localStorage
+    const userId = user.uid;
+    localStorage.setItem(`favorites_${userId}`, JSON.stringify(updatedFavorites));
+  };
+
   if (!user) {
     return <div>Cargando...</div>;
   }
@@ -76,6 +84,7 @@ const Usuario = () => {
                 id={comic.id}
                 imagen={comic.imagen} 
                 titulo={comic.titulo} 
+                onRemove={handleRemoveFavorite}
               />
             ))}
           </div>
