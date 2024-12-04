@@ -9,18 +9,32 @@ import LoginIcon from '@mui/icons-material/Login';
 import { LoadingButton } from '@mui/lab'
 
 /**
- * Página de login, validaciones de autorización de usuario
- * @returns una vez autorizado correctamente abre la página del usuario directamente
+ * Página de inicio de sesión que permite a los usuarios autenticarse.
+ * Realiza validaciones de los campos de entrada y maneja la lógica de inicio de sesión.
+ * 
+ * @returns {JSX.Element} El componente renderizado que muestra el formulario de inicio de sesión.
  */
 const Login = () => {
-    const {user} = useContext(UserContext);
+    const {user} = useContext(UserContext); //obtener contexto
 
-    const navigate = useNavigate()
+    const navigate = useNavigate() //reedirigir a usuario una vez autenticado
 
     useEffect(() => {
         if(user) navigate ("/usuario")
     }, [user])
 
+     /**
+     * Maneja el envío del formulario de inicio de sesión.
+     *
+     * @param {Object} values - Valores del formulario.
+     * @param {string} values.name - Nombre del usuario.
+     * @param {string} values.email - Correo electrónico del usuario.
+     * @param {string} values.password - Contraseña del usuario.
+     * @param {Object} formikHelpers - Ayudantes de Formik para manejar el estado del formulario.
+     * @param {function} formikHelpers.setSubmitting - Función para establecer el estado de envío.
+     * @param {function} formikHelpers.setErrors - Función para establecer errores en el formulario.
+     * @param {function} formikHelpers.resetForm - Función para reiniciar el formulario.
+     */
     const onSubmit = async ({name,email,password},{setSubmitting, setErrors, resetForm }) => {
         try{
             await login({name,email,password})

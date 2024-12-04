@@ -16,7 +16,12 @@ const contacto = lazy(() => import("../pages/Contacto"));
 const personaje = lazy(() => import("../pages/Personaje"));
 
 /**
- *  Manejo del enrutamiento de las páginas de la app
+ * Manejo del enrutamiento de las páginas de la aplicación.
+ * 
+ * Este objeto define las rutas y sus componentes asociados, 
+ * incluyendo rutas públicas y privadas, así como la gestión de errores.
+ * 
+ * @returns {Object} El objeto de enrutamiento creado por createBrowserRouter.
  */
 export const router = createBrowserRouter([
     {

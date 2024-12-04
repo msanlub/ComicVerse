@@ -4,6 +4,13 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Comic from '../components/comics/Comic'; 
 import Pagination from '../components/Pagination'; 
 
+
+/**
+ * Componente Usuario que maneja la visualización de los cómics favoritos del usuario.
+ * Permite la autenticación del usuario y la gestión de sus cómics favoritos.
+ * 
+ * @returns {JSX.Element} La página de usuario que muestra los cómics favoritos del usuario.
+ */
 const Usuario = () => {
   const [userName, setUserName] = useState('');
   const [favoriteComics, setFavoriteComics] = useState([]);

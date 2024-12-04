@@ -6,6 +6,13 @@ import BuscadorComics from "../components/forms/BuscadorComics";
 import { ThreeDots } from "react-loader-spinner";
 import ListaEventos from "../components/events/ListaEventos";
 
+/**
+ * Componente que permite buscar y mostrar información sobre un personaje de Marvel,
+ * incluyendo sus cómics y eventos asociados.
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra la información del personaje,
+ * cómics y eventos relacionados.
+ */
 const Personaje = () => {
   const [characterName, setCharacterName] = useState('');
   const [characterData, setCharacterData] = useState({ id: null, name: '', description: '', image: '' }); 

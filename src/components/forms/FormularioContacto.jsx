@@ -6,8 +6,13 @@ import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import { LoadingButton } from '@mui/lab';
 
 /**
- * Componente formulario para contacto
- * @returns los parámetros indicados por el usuario
+ * Componente de formulario de contacto que permite a los usuarios enviar sus datos.
+ * 
+ * Este componente incluye campos para el nombre, correo electrónico, mensaje y una casilla
+ * de verificación para aceptar los términos y condiciones. Utiliza Formik para manejar el
+ * estado del formulario y Yup para la validación.
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra el formulario de contacto.
  */
 const FormularioContacto = () => {
   const estadoInicial = {

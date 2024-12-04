@@ -2,6 +2,14 @@ import { useState, useEffect } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+/**
+ * Componente que muestra la información de un cómic y manejo de comics favoritos
+ * @param {id} id del comic
+ * @param {imagen} imagen del comic con extension
+ * @param {titulo} titulo del comic
+ * @param {onRemove} funcion en respuesta a la eliminación de un comic de favoritos
+ * @returns 
+ */
 const Comic = ({ id, imagen, titulo, onRemove }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);

@@ -2,9 +2,16 @@ import Comic from './Comic';
 //import '../../sass/components/_listaComic.sass';
 
 /**
- * Componente que devuelve el listado de comics de la api
- * @param { comics } 
- * @returns lista de comics
+ * Componente que representa un listado de cómics obtenidos de la API.
+ * 
+ * Este componente recibe una lista de cómics y renderiza un componente `Comic`
+ * para cada uno de ellos, mostrando su imagen y título.
+ *
+ * @param {Object} props - Propiedades del componente.
+ * @param {Array} props.comics - Array de objetos de cómics, donde cada objeto contiene
+ *                               información sobre un cómic (id, thumbnail, title).
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra la lista de cómics.
  */
 const ListaComics = ({ comics }) => {
   //console.log(comics)

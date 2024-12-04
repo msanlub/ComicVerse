@@ -1,4 +1,4 @@
-import { onAuthStateChanged } from 'firebase/auth';
+//import { onAuthStateChanged } from 'firebase/auth';
 import { useContext, useEffect } from 'react';
 import { register } from '../config/Firebase';
 import { Link, useNavigate } from 'react-router-dom';
@@ -56,11 +56,11 @@ const Registro = () => {
             .test('is-valid-date', 'La fecha no es válida', value => {
                 if (!value) return false;
                 const [day, month, year] = value.split('/').map(Number);
-                const date = new Date(year, month - 1, day); // Mes - 1 porque los meses son indexados desde 0
+                const date = new Date(year, month - 1, day); 
                 return date && date.getDate() === day && date.getMonth() === month - 1 && date.getFullYear() === year;
             }),
         phone: Yup.string()
-            .matches(/^[0-9]{9}$/, "El número de teléfono debe tener 9 dígitos") // Cambiado a 9 dígitos
+            .matches(/^[0-9]{9}$/, "El número de teléfono debe tener 9 dígitos") 
             .required("El número de teléfono es requerido"),
     });
 
@@ -107,7 +107,7 @@ const Registro = () => {
                             helperText={errors.phone && touched.phone && errors.phone}
                         />
                         <TextField
-                            type='text' // Cambiado a texto para permitir formato dd/mm/aaaa
+                            type='text'
                             placeholder='dd/mm/aaaa'
                             value={values.birthdate}
                             onChange={handleChange}

@@ -3,9 +3,15 @@ import flechaDcha from '../assets/flechaDcha.png';
 import flechaIzda from '../assets/flechaIzda.png';
 
 /**
- * Componente de paginación
- * @param { currentPage, itemsPerPage, totalItems, onPageChange } 
- * @returns 
+ * Componente de paginación que permite navegar entre páginas de elementos.
+ *
+ * @param {Object} props - Propiedades del componente.
+ * @param {number} props.currentPage - La página actual seleccionada.
+ * @param {number} props.itemsPerPage - Número de elementos por página.
+ * @param {number} props.totalItems - Total de elementos disponibles.
+ * @param {function} props.onPageChange - Función que se llama al cambiar de página.
+ *
+ * @returns {JSX.Element} El componente de paginación renderizado.
  */
 const Pagination = ({ currentPage, itemsPerPage, totalItems, onPageChange }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);

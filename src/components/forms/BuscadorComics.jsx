@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react';
 
 /**
- * Devuelve la búsqueda de los filtros que ingresa el usuario de los comics para personaje,eventos o creadores
- * @param {onSearch}
- * @returns 
+ * Componente para buscar cómics basado en filtros ingresados por el usuario.
+ * 
+ * Este componente permite a los usuarios seleccionar filtros como formato de publicación,
+ * criterios de ordenamiento y si desean incluir variantes en la búsqueda.
+ * Cada vez que se cambia un filtro, se llama a la función `onSearch` con los valores actuales
+ * de los filtros.
+ *
+ * @param {Object} props - Propiedades del componente.
+ * @param {function} props.onSearch - Función que se llama con los filtros aplicados cada vez que cambian.
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra el formulario de búsqueda.
  */
 const BuscadorComics = ({ onSearch }) => {
   const [format, setFormat] = useState('');

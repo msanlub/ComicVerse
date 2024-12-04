@@ -6,8 +6,10 @@ import { ThreeDots } from "react-loader-spinner";
 import FlechaScroll from "../components/FlechaScroll";
 
 /**
- * Página principal de la app, maneja los fetchApi para comics y eventos y paginación de eventos
- * @returns bienvenida, listado de comics y listado de eventos
+ * Página principal de la aplicación que maneja la carga de cómics y eventos random desde la API de Marvel.
+ * 
+ * @returns {JSX.Element} El componente renderizado que muestra una galería de imágenes, 
+ * un listado de cómics y un listado de eventos con paginación.
  */
 const Inicio = () => {
   const [comicsData, setComicsData] = useState([]);

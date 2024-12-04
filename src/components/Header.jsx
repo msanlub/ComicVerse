@@ -9,8 +9,12 @@ import { useContext } from "react";
 import { logOut } from "../config/Firebase";
 
 /**
- * Componente header o cabecera de página
- * @returns Cabecera de página (logo,menú)
+ * Componente de cabecera de la página que incluye el logo y el menú de navegación.
+ * 
+ * Este componente muestra un fondo, el logotipo de la aplicación y enlaces de navegación.
+ * También maneja el inicio y cierre de sesión del usuario.
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra la cabecera de la página.
  */
 const Header = () => {
     const {user, setUser} = useContext(UserContext)
