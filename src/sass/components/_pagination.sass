@@ -12,7 +12,13 @@
     display: flex
     gap: 16px
      
-.item__button 
+.flecha
+  width: 4rem
+  height: auto
+  cursor: pointer
+
+
+.item__numero
     color: $primary-color
     @include title-text-init(700)
     font-size: 40px
@@ -25,11 +31,11 @@
 
 
 /* Efecto hover */
-.item__button:hover 
+.item__numero:hover 
     color: $primary-color-dark
     transform: scale(1.4)
 
 
 /* Efecto activo (cuando se hace clic) */
-.item__button:active 
+.item__numero:active 
     transform: scale(0.95)

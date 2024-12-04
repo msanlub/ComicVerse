@@ -8,6 +8,7 @@ import Pagination from '../Pagination'
  * @returns 
  */
 const ListaEventos = ({ eventos, currentPage, eventsPerPage, totalEvents, onPageChange }) => {
+  
   return (
     <section className="container__listaEventos">
             {eventos.map((evento) => (

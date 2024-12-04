@@ -1,34 +1,42 @@
-//import '../../sass/components/_cardComic.sass';
-
-import { getAuth } from "firebase/auth";
-import { useState } from "react";
-import { addFavorite, removeFavorite } from "../../config/Firebase";
+import { useState, useEffect } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-
-/**
- * Componente card de cada comic
- * @param { id, imagen, titulo } 
- * @returns estructura de comic
- */
-const Comic = ({ id, imagen, titulo}) => {
+const Comic = ({ id, imagen, titulo }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const auth = getAuth();
-  const user = auth.currentUser;
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthorized(!!user);
+      if (user) {
+        const favorites = JSON.parse(localStorage.getItem(`favorites_${user.uid}`)) || [];
+        setIsFavorite(favorites.some(fav => fav.id === id)); // Verifica si el comic esta en favoritos
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth, id]);
 
   const handleFavoriteClick = () => {
-    if (!user) {
-        alert("Debes estar logueado para añadir a favoritos.");
-        return;
+    if (!isAuthorized) {
+      alert("Debes iniciar sesión para añadir a favoritos.");
+      return;
     }
 
+    const userId = auth.currentUser.uid;
+    let favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`)) || [];
+    
     if (isFavorite) {
-        removeFavorite(user.uid, id);
+      favorites = favorites.filter(fav => fav.id !== id);
     } else {
-        addFavorite(user.uid, id);
+      favorites.push({ id, imagen, titulo }); 
     }
+
+    localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
     setIsFavorite(!isFavorite);
-};
+  };
 
   return (
     <article className='contenedor__comic'>
@@ -38,7 +46,10 @@ const Comic = ({ id, imagen, titulo}) => {
         <FavoriteIcon 
           onClick={handleFavoriteClick} 
           className="info__favorito"
-          style={{ cursor: 'pointer', color: isFavorite ? 'red' : 'gray' }} 
+          style={{ 
+            cursor: isAuthorized ? 'pointer' : 'not-allowed', 
+            color: isFavorite ? 'red' : 'gray' 
+          }} 
         />
       </section>
     </article>

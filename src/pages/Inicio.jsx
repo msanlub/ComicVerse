@@ -3,6 +3,7 @@ import GaleriaImagenes from "../components/GaleriaImagenes";
 import ListaEventos from "../components/events/ListaEventos";
 import ListaComics from "../components/comics/ListaComics";
 import { ThreeDots } from "react-loader-spinner";
+import FlechaScroll from "../components/FlechaScroll";
 
 /**
  * Página principal de la app, maneja los fetchApi para comics y eventos y paginación de eventos
@@ -13,6 +14,7 @@ const Inicio = () => {
   const [eventsData, setEventsData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showArrow, setShowArrow] = useState(false);
 
   // paginación y eventos por pagina
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,6 +58,18 @@ const Inicio = () => {
   useEffect(() => {
     fetchEvents();
     fetchComics(); 
+
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowArrow(true);
+      } else {
+        setShowArrow(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Calcular los índices de los eventos a mostrar por pagina
@@ -63,8 +77,17 @@ const Inicio = () => {
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
   const currentEvents = eventsData.length > 0 ? eventsData.slice(indexOfFirstEvent, indexOfLastEvent) : [];
 
-  // Función para cambiar de página
-  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+   // Total de páginas
+   const totalPages = Math.ceil(eventsData.length / eventsPerPage);
+
+   // Función para cambiar de página
+   const handlePageChange = (direction) => {
+    if (direction === 'next' && currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+    } else if (direction === 'prev' && currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
+  };
  
 
   // mientras carga y si hay error en cada una de las llamadas a la api
@@ -108,8 +131,9 @@ const Inicio = () => {
           </section>
         </>
       )}
+      <FlechaScroll show={showArrow} />
     </>
   );
-};
+}
 
 export default Inicio;

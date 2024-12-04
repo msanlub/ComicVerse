@@ -1,28 +1,41 @@
-//import '../sass/components/_Pagination.sass';
-
+import '../sass/components/_pagination.sass';
+import flechaDcha from '../assets/flechaDcha.png';
+import flechaIzda from '../assets/flechaIzda.png';
 
 /**
- * Devuelve el cálculo de las páginas y cuantos items van por página
+ * Componente de paginación
  * @param { currentPage, itemsPerPage, totalItems, onPageChange } 
  * @returns 
  */
 const Pagination = ({ currentPage, itemsPerPage, totalItems, onPageChange }) => {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
     <nav className="container__pagination">
       <ul className='pagination__list'>
-        {pageNumbers.map(number => (
-          <li key={number} className={`list__item ${currentPage === number ? 'active' : ''}`}>
-            <button onClick={() => onPageChange(number)} className="item__button">
-              {number}
-            </button>
-          </li>
-        ))}
+        <li className='list__item'>
+          <img 
+            src={flechaIzda} 
+            className='flecha' 
+            onClick={() => onPageChange('prev')} 
+            alt="flecha anterior"
+            style={{ cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }} // Cambia el cursor
+          />
+        </li>
+        
+        <li className='list__item'>
+          <span className="item__numero">{currentPage} / {totalPages}</span> {/* Muestra la página actual */}
+        </li>
+
+        <li className='list__item'>
+          <img 
+            src={flechaDcha} 
+            className='flecha' 
+            onClick={() => onPageChange('next')} 
+            alt="flecha siguiente"
+            style={{ cursor: currentPage === totalPages ? 'not-allowed' : 'pointer' }} // Cambia el cursor
+          />
+        </li>
       </ul>
     </nav>
   );
