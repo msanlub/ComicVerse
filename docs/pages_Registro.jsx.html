@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>pages/Registro.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BuscadorComics">BuscadorComics</a></li><li><a href="global.html#Comic">Comic</a></li><li><a href="global.html#Contacto">Contacto</a></li><li><a href="global.html#Evento">Evento</a></li><li><a href="global.html#FlechaScroll">FlechaScroll</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FormularioContacto">FormularioContacto</a></li><li><a href="global.html#GaleriaImagenes">GaleriaImagenes</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Inicio">Inicio</a></li><li><a href="global.html#LayoutPrivate">LayoutPrivate</a></li><li><a href="global.html#ListaComics">ListaComics</a></li><li><a href="global.html#ListaEventos">ListaEventos</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#Pagination">Pagination</a></li><li><a href="global.html#Personaje">Personaje</a></li><li><a href="global.html#Registro">Registro</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#Usuario">Usuario</a></li><li><a href="global.html#layoutPublic">layoutPublic</a></li><li><a href="global.html#router">router</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pages/Registro.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//import { onAuthStateChanged } from 'firebase/auth';
+import { useContext, useEffect } from 'react';
+import { register } from '../config/Firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { Avatar, Box, Button, TextField, Typography } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
+import { LoadingButton } from '@mui/lab';
+
+/**
+ * Página de registro, permite al usuario registrarse mediante formulario
+ * @returns Una vez registrado, abre la página personal del usuario
+ */
+const Registro = () => {
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) navigate("/usuario");
+    }, [user]);
+
+    const onSubmit = async ({ name, email, password, birthdate, phone }, { setSubmitting, setErrors, resetForm }) => {
+        try {
+            await register({ name, email, password, birthdate, phone });
+            console.log("User registered");
+            resetForm();
+        } catch (error) {
+            if (error.code === "auth/invalid-credential")
+                return setErrors({ credentials: "Credenciales inválidas" });
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
+    // Validación con Yup
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().trim().required("El nombre es requerido"),
+        email: Yup.string()
+            .matches(
+                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|es)$/,
+                'El correo debe tener un formato correcto'
+            )
+            .required('El correo electrónico es obligatorio'),
+        password: Yup.string()
+            .trim()
+            .min(8, "La contraseña debe tener al menos 8 caracteres")
+            .matches(/^(?=.*[a-z])/, "Debe contener al menos una letra minúscula")
+            .matches(/^(?=.*[A-Z])/, "Debe contener al menos una letra mayúscula")
+            .matches(/^(?=.*[0-9])/, "Debe contener al menos un número")
+            .required("El campo contraseña es requerido"),
+        birthdate: Yup.string()
+            .matches(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([0-9]{4})$/, "La fecha debe estar en formato dd/mm/aaaa")
+            .required("La fecha de nacimiento es requerida")
+            .test('is-valid-date', 'La fecha no es válida', value => {
+                if (!value) return false;
+                const [day, month, year] = value.split('/').map(Number);
+                const date = new Date(year, month - 1, day); 
+                return date &amp;&amp; date.getDate() === day &amp;&amp; date.getMonth() === month - 1 &amp;&amp; date.getFullYear() === year;
+            }),
+        phone: Yup.string()
+            .matches(/^[0-9]{9}$/, "El número de teléfono debe tener 9 dígitos") 
+            .required("El número de teléfono es requerido"),
+    });
+
+    return (
+        &lt;Box sx={{ mt: "1rem", maxWidth: "400px", textAlign: "center" }}>
+            &lt;Avatar sx={{ mx: "auto", bgcolor: "#111" }}>
+                &lt;LoginIcon />
+            &lt;/Avatar>
+            &lt;Typography variant='h5' component="h1">Registro&lt;/Typography>
+            &lt;Formik
+                initialValues={{ name: '', email: '', password: '', birthdate: '', phone: '' }}
+                onSubmit={onSubmit}
+                validationSchema={validationSchema}
+            >
+                {({ values, handleChange, handleSubmit, isSubmitting, handleBlur, errors, touched }) => (
+                    &lt;Box sx={{ mt: 1 }} component={'form'} onSubmit={handleSubmit}>
+                        &lt;TextField
+                            type='text'
+                            placeholder='nombre'
+                            value={values.name}
+                            onChange={handleChange}
+                            name='name'
+                            onBlur={handleBlur}
+                            id='name'
+                            label='Introduce el nombre'
+                            fullWidth
+                            sx={{ mb: 3 }}
+                            error={errors.name &amp;&amp; touched.name}
+                            helperText={errors.name &amp;&amp; touched.name &amp;&amp; errors.name}
+                        />
+
+                        &lt;TextField
+                            type='text' 
+                            placeholder='Número de teléfono (9 dígitos)'
+                            value={values.phone}
+                            onChange={handleChange}
+                            name='phone'
+                            onBlur={handleBlur}
+                            id='phone'
+                            label='Introduce el teléfono (9 dígitos)'
+                            fullWidth
+                            sx={{ mb: 3 }}
+                            error={errors.phone &amp;&amp; touched.phone}
+                            helperText={errors.phone &amp;&amp; touched.phone &amp;&amp; errors.phone}
+                        />
+                        &lt;TextField
+                            type='text'
+                            placeholder='dd/mm/aaaa'
+                            value={values.birthdate}
+                            onChange={handleChange}
+                            name='birthdate'
+                            onBlur={handleBlur}
+                            id='birthdate'
+                            label='Fecha de nacimiento (dd/mm/aaaa)'
+                            fullWidth
+                            sx={{ mb: 3 }}
+                            error={errors.birthdate &amp;&amp; touched.birthdate}
+                            helperText={errors.birthdate &amp;&amp; touched.birthdate &amp;&amp; errors.birthdate}
+                        />
+                        &lt;TextField
+                            type='text'
+                            placeholder='email@email.com'
+                            value={values.email}
+                            onChange={handleChange}
+                            name='email'
+                            onBlur={handleBlur}
+                            id='email'
+                            label='Introduce el email'
+                            fullWidth
+                            sx={{ mb: 3 }}
+                            error={errors.email &amp;&amp; touched.email}
+                            helperText={errors.email &amp;&amp; touched.email &amp;&amp; errors.email}
+                        />
+
+                        &lt;TextField
+                            type='password'
+                            placeholder='password'
+                            value={values.password}
+                            onChange={handleChange}
+                            name='password'
+                            onBlur={handleBlur}
+                            id='password'
+                            label='Introduce el password'
+                            fullWidth
+                            sx={{ mb: 3 }}
+                            error={errors.password &amp;&amp; touched.password}
+                            helperText={errors.password &amp;&amp; touched.password &amp;&amp; errors.password}
+                        />
+
+                        &lt;LoadingButton
+                            variant="contained"
+                            type="submit"
+                            disabled={isSubmitting}
+                            loading={isSubmitting}
+                            fullWidth
+                        >
+                          Registrarse
+                        &lt;/LoadingButton>
+
+                        &lt;Button 
+                          fullWidth
+                          component={Link}
+                          to={"/login"}
+                          disabled={isSubmitting}
+                        >
+                          ¿Ya tienes cuenta? Inicia sesión
+                        &lt;/Button>
+
+                        {errors.credentials &amp;&amp; &lt;p>{errors.credentials}&lt;/p>}
+                    &lt;/Box>
+                )}
+            &lt;/Formik>
+        &lt;/Box>
+    );
+};
+
+export default Registro;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Wed Dec 04 2024 20:29:10 GMT+0100 (hora estándar de Europa central) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

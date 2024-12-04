@@ -3,13 +3,20 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 /**
- * Componente que muestra la información de un cómic y manejo de comics favoritos
- * @param {id} id del comic
- * @param {imagen} imagen del comic con extension
- * @param {titulo} titulo del comic
- * @param {onRemove} funcion en respuesta a la eliminación de un comic de favoritos
- * @returns 
+ * Componente que muestra la información de un cómic y maneja los cómics favoritos.
+ *
+ * Este componente permite a los usuarios ver la portada de un cómic, su título,
+ * y gestionar la adición o eliminación del cómic de su lista de favoritos.
+ *
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.id - ID del cómic.
+ * @param {string} props.imagen - URL de la imagen del cómic con extensión.
+ * @param {string} props.titulo - Título del cómic.
+ * @param {function} props.onRemove - Función que se llama al eliminar un cómic de favoritos.
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra la información del cómic.
  */
+
 const Comic = ({ id, imagen, titulo, onRemove }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);

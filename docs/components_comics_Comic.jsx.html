@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/comics/Comic.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BuscadorComics">BuscadorComics</a></li><li><a href="global.html#Comic">Comic</a></li><li><a href="global.html#Contacto">Contacto</a></li><li><a href="global.html#Evento">Evento</a></li><li><a href="global.html#FlechaScroll">FlechaScroll</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FormularioContacto">FormularioContacto</a></li><li><a href="global.html#GaleriaImagenes">GaleriaImagenes</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Inicio">Inicio</a></li><li><a href="global.html#LayoutPrivate">LayoutPrivate</a></li><li><a href="global.html#ListaComics">ListaComics</a></li><li><a href="global.html#ListaEventos">ListaEventos</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#Pagination">Pagination</a></li><li><a href="global.html#Personaje">Personaje</a></li><li><a href="global.html#Registro">Registro</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#Usuario">Usuario</a></li><li><a href="global.html#layoutPublic">layoutPublic</a></li><li><a href="global.html#router">router</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/comics/Comic.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from "react";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+/**
+ * Componente que muestra la información de un cómic y maneja los cómics favoritos.
+ *
+ * Este componente permite a los usuarios ver la portada de un cómic, su título,
+ * y gestionar la adición o eliminación del cómic de su lista de favoritos.
+ *
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.id - ID del cómic.
+ * @param {string} props.imagen - URL de la imagen del cómic con extensión.
+ * @param {string} props.titulo - Título del cómic.
+ * @param {function} props.onRemove - Función que se llama al eliminar un cómic de favoritos.
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra la información del cómic.
+ */
+
+const Comic = ({ id, imagen, titulo, onRemove }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthorized(!!user);
+      if (user) {
+        const favorites = JSON.parse(localStorage.getItem(`favorites_${user.uid}`)) || [];
+        setIsFavorite(favorites.some(fav => fav.id === id)); // Verifica si el comic esta en favoritos
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth, id]);
+
+  const handleFavoriteClick = () => {
+    if (!isAuthorized) {
+      alert("Debes iniciar sesión para añadir a favoritos.");
+      return;
+    }
+
+    const userId = auth.currentUser.uid;
+    let favorites = JSON.parse(localStorage.getItem(`favorites_${userId}`)) || [];
+    
+    if (isFavorite) {
+      favorites = favorites.filter(fav => fav.id !== id); 
+      console.log("Eliminado de favoritos");
+      onRemove(id);
+    } else {
+      favorites.push({ id, imagen, titulo });
+      console.log("Agregado a favoritos");
+    }
+
+    localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
+    setIsFavorite(!isFavorite);
+  };
+
+  return (
+    &lt;article className='contenedor__comic'>
+      &lt;img className='comic__imagen' src={imagen} alt={`Portada de ${titulo}`} />
+      &lt;section className='comic__info'>
+        &lt;h1 className="info__titulo">{titulo}&lt;/h1>   
+        &lt;FavoriteIcon 
+          onClick={handleFavoriteClick} 
+          className="info__favorito"
+          style={{ 
+            cursor: isAuthorized ? 'pointer' : 'not-allowed', 
+            color: isFavorite ? 'red' : 'gray' 
+          }} 
+        />
+      &lt;/section>
+    &lt;/article>
+  );
+};
+
+export default Comic;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Wed Dec 04 2024 20:29:10 GMT+0100 (hora estándar de Europa central) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

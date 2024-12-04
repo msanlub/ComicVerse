@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/forms/FormularioContacto.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BuscadorComics">BuscadorComics</a></li><li><a href="global.html#Comic">Comic</a></li><li><a href="global.html#Contacto">Contacto</a></li><li><a href="global.html#Evento">Evento</a></li><li><a href="global.html#FlechaScroll">FlechaScroll</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FormularioContacto">FormularioContacto</a></li><li><a href="global.html#GaleriaImagenes">GaleriaImagenes</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Inicio">Inicio</a></li><li><a href="global.html#LayoutPrivate">LayoutPrivate</a></li><li><a href="global.html#ListaComics">ListaComics</a></li><li><a href="global.html#ListaEventos">ListaEventos</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#Pagination">Pagination</a></li><li><a href="global.html#Personaje">Personaje</a></li><li><a href="global.html#Registro">Registro</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#Usuario">Usuario</a></li><li><a href="global.html#layoutPublic">layoutPublic</a></li><li><a href="global.html#router">router</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/forms/FormularioContacto.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState } from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { Avatar, Box, TextField, Typography, FormControlLabel, Checkbox } from '@mui/material';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import { LoadingButton } from '@mui/lab';
+
+/**
+ * Componente de formulario de contacto que permite a los usuarios enviar sus datos.
+ * 
+ * Este componente incluye campos para el nombre, correo electrónico, mensaje y una casilla
+ * de verificación para aceptar los términos y condiciones. Utiliza Formik para manejar el
+ * estado del formulario y Yup para la validación.
+ *
+ * @returns {JSX.Element} El componente renderizado que muestra el formulario de contacto.
+ */
+const FormularioContacto = () => {
+  const estadoInicial = {
+    email: '',
+    name: '',
+    message: '',
+    acceptTerms: false,
+  };
+
+  const [todo, setTodo] = useState(estadoInicial);
+  
+
+  const onSubmit = async (values, { setSubmitting, setErrors, resetForm }) => {
+    try {
+      await setTodo(values);
+      console.log(values);
+      resetForm(estadoInicial);
+    } catch (error) {
+      if (error.code === "auth/invalid-credential")
+        return setErrors({ credentials: "Credenciales inválidas" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  // validaciones de correo,nombre,mensaje y checkbox
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|es)$/,
+      'El correo debe tener un formato correcto'
+    )
+    .required('El correo electrónico es obligatorio'),
+    name: Yup.string().trim().required("El campo nombre es requerido"),
+    message: Yup.string().trim().required("El campo mensaje es requerido"),
+    acceptTerms: Yup.boolean().oneOf([true], 'Debes aceptar los términos y condiciones'),
+  });
+
+  return (
+    &lt;Box sx={{ mt: "1rem", maxWidth: "400px", textAlign: "center" }}>
+      &lt;Avatar sx={{ mx: "auto", bgcolor: "#111" }}>
+        &lt;QuestionAnswerIcon />
+      &lt;/Avatar>
+      &lt;Typography variant='h5' component="h1">
+        Contacto
+      &lt;/Typography>
+      &lt;Formik
+        initialValues={estadoInicial}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {({ values, handleChange, handleSubmit, isSubmitting, handleBlur, errors, touched }) => (
+          &lt;Box sx={{ mt: 1 }} component={'form'} onSubmit={handleSubmit}>
+            &lt;TextField
+              type='text'
+              placeholder='Introduce tu nombre'
+              value={values.name}
+              onChange={handleChange}
+              name='name'
+              onBlur={handleBlur}
+              id='name'
+              label='Nombre'
+              fullWidth
+              sx={{ mb: 3 }}
+              error={errors.name &amp;&amp; touched.name}
+              helperText={errors.name &amp;&amp; touched.name &amp;&amp; errors.name}
+            />
+            &lt;TextField
+              type='email'
+              placeholder='Introduce tu email'
+              value={values.email}
+              onChange={handleChange}
+              name='email'
+              onBlur={handleBlur}
+              id='email'
+              label='Email'
+              fullWidth
+              sx={{ mb: 3 }}
+              error={errors.email &amp;&amp; touched.email}
+              helperText={errors.email &amp;&amp; touched.email &amp;&amp; errors.email}
+            />
+            &lt;TextField
+              type='text'
+              placeholder='Escribe tu mensaje aquí'
+              value={values.message}
+              onChange={handleChange}
+              name='message'
+              onBlur={handleBlur}
+              id='message'
+              label='Mensaje'
+              multiline
+              rows={4}
+              fullWidth
+              sx={{ mb: 3 }}
+              error={errors.message &amp;&amp; touched.message}
+              helperText={errors.message &amp;&amp; touched.message &amp;&amp; errors.message}
+            />
+            &lt;FormControlLabel
+              control={
+                &lt;Checkbox
+                  checked={values.acceptTerms}
+                  onChange={handleChange}
+                  name="acceptTerms"
+                />
+              }
+              label="Acepto los términos y condiciones"
+            />
+            {errors.acceptTerms &amp;&amp; touched.acceptTerms &amp;&amp; (
+              &lt;Typography color="error" variant="caption" display="block">
+                {errors.acceptTerms}
+              &lt;/Typography>
+            )}
+            &lt;LoadingButton
+              variant="contained"
+              type="submit"
+              disabled={isSubmitting}
+              loading={isSubmitting}
+              fullWidth
+              sx={{ mb: 3 }}
+            >
+              Enviar
+            &lt;/LoadingButton>
+            {errors.credentials &amp;&amp; &lt;p>{errors.credentials}&lt;/p>}
+          &lt;/Box>
+        )}
+      &lt;/Formik>
+    &lt;/Box>
+  );
+};
+
+export default FormularioContacto;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Wed Dec 04 2024 20:29:10 GMT+0100 (hora estándar de Europa central) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

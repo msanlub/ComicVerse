@@ -1,0 +1,26 @@
+{
+    "source": {
+        "include": [
+            "src/components",
+            "src/pages",
+            "src/config",
+            "src/context",
+            "src/layouts",
+            "src/router"
+        ],
+        "includePattern": ".+\\.(js|jsx)$",
+        "excludePattern": "(node_modules|docs)"
+    },
+    "opts": {
+        "destination": "./docs", 
+        "recurse": true ,
+        "template": "node_modules/docdash" 
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    }
+}
