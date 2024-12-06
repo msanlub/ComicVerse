@@ -18,7 +18,6 @@ const firebaseConfig = {
     storageBucket: import.meta.env.VITE_FIREBASE_API_STORAGE_BUCKET,
     messagingSenderId: import.meta.env.VITE_FIREBASE_API_MESSAGING_SENDER_ID,
     appId: import.meta.env.VITE_FIREBASE_API_APP_ID,
-    // databaseURL:"https://comicverse-396d7-default-rtdb.europe-west1.firebasedatabase.app/"
 };
 
 
