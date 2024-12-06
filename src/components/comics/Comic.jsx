@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Swal from "sweetalert2";
 
 /**
  * Componente que muestra la información de un cómic y maneja los cómics favoritos.
@@ -36,7 +37,13 @@ const Comic = ({ id, imagen, titulo, onRemove }) => {
 
   const handleFavoriteClick = () => {
     if (!isAuthorized) {
-      alert("Debes iniciar sesión para añadir a favoritos.");
+      Swal.fire({
+        title: "No autorizado!",
+        text: "Debes iniciar sesión o registrarte",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+      });
       return;
     }
 

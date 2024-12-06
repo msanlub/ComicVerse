@@ -23,8 +23,9 @@ const Registro = () => {
 
     const onSubmit = async ({ name, email, password, birthdate, phone }, { setSubmitting, setErrors, resetForm }) => {
         try {
-            await register({ name, email, password, birthdate, phone });
+            const userCredential = await register({ name, email, password, birthdate, phone });
             console.log("User registered");
+            localStorage.setItem(`userName_${userCredential.user.uid}`, name);
             resetForm();
         } catch (error) {
             if (error.code === "auth/invalid-credential")

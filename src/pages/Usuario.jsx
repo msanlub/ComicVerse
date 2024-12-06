@@ -24,8 +24,8 @@ const Usuario = () => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        setUserName(currentUser.displayName || currentUser.email);
-        
+        const storedName = localStorage.getItem(`userName_${currentUser.uid}`);
+        setUserName(storedName || currentUser.displayName || currentUser.email);        
         // Cargar los cómics favoritos desde localStorage
         const favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.uid}`)) || [];
         
@@ -79,8 +79,8 @@ const Usuario = () => {
 
   return (
     <div>
-      <h1>Bienvenido, {userName}</h1>
-      <h2>Mis Cómics Favoritos</h2>
+      <h1>Bienvenid@, {userName}</h1>
+      <h2>Mis Comics Favoritos</h2>
       
       {currentComics.length > 0 ? (
         <>

@@ -24,11 +24,12 @@ const Inicio = () => {
 
   // defino la apikey
   const apiKey = import.meta.env.VITE_MARVEL_API_KEY;
+  const hash = import.meta.env.VITE_MARVEL_API_KEY_HASH;
 
   // FETCH PARA COMICS
   const fetchComics = async () => {
     try {
-      let url = `https://gateway.marvel.com/v1/public/comics?apikey=${apiKey}`;
+      let url = `https://gateway.marvel.com/v1/public/comics?ts=1&apikey=${apiKey}&hash=${hash}`;
 
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Error fetching comics: ${response.status}`);
@@ -45,7 +46,7 @@ const Inicio = () => {
   // FETCH PARA EVENTOS
    const fetchEvents = async () => {
     try {
-      const response = await fetch(`https://gateway.marvel.com:443/v1/public/events?apikey=${apiKey}`);
+      const response = await fetch(`https://gateway.marvel.com:443/v1/public/events?ts=1&apikey=${apiKey}&hash=${hash}`);
       if (!response.ok) throw new Error(`Error fetching events: ${response.status}`);
       
       const result = await response.json();
