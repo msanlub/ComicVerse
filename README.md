@@ -173,7 +173,7 @@ Incluye componentes de estructura:
 - LayourPrivate.jsx, se encarga del manejo de la parte sólo visible para el usuario.
 ### Router: 
 Contiene la configuración del enrutador de la aplicación.
-### Styles: 
+### Sass: 
 Destinado a archivos de estilos de las páginas y componentes.
 ### Main.jsx: 
 Punto de entrada principal de la aplicación React..
@@ -190,3 +190,5 @@ Punto de entrada principal de la aplicación React..
 [Documentación app](/docs/index.html)
 
 [Conclusión](/Conclusión.md)
+
+[Instalación](/instalacionYconfig.md)
