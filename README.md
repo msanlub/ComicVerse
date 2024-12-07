@@ -100,25 +100,23 @@ Sin embargo, ComicVerse se diferencia por:
 
    Para la implementación y alojamiento de la web.
 
-### Base de datos: IndexedDB
-
-   Almacenamiento de datos localmente en el navegador (almacén de configuración de usuario, de comics favoritos y de creador/artista favorito) asegurando la persistencia de la información.
-
 ### Librerías:
     
    - React Router:
 
      Realiza el enrutamiento de la aplicación, permitiendo crear rutas dinámicas y gestionando la navegación.
      
-   - React icons:
+   - Los componentes de Material-UI (@mui/material) como iconos,tipografia, botones.. para formularios .
 
-     Librería de iconos para facilitar su uso e implementación. 
+   - Formik y Yup se utilizan para la validación de formularios.
+
+   - SweetAlert2 se usa para mostrar alertas y notificaciones atractivas.
+
 
 ## 📁 Estructura del proyecto
 ```bash
 src/
 |-- assets/
-|   |-- icons/
 |-- components/
 |   |-- eventos/
 |   |   |-- Evento.jsx
@@ -126,18 +124,16 @@ src/
 |   |-- comic/
 |   |   |-- Comic.jsx
 |   |   |-- ListaComics.jsx
-|   |-- artista/
-|   |   |-- ArtistaComic.jsx
-|   |   |-- ListaArtistaComic.jsx
 |   |-- forms/
 |   |   |-- FormularioContacto.jsx
 |   |   |-- FormularioBusqueda.jsx
 |   |-- Footer.jsx
 |   |-- Header.jsx
+|   |-- FlechaScroll.jsx
+|   |-- GaleriaImagenes.jsx
+|   |-- Pagination.jsx
 |-- pages/
-|   |-- Artista.jsx
 |   |-- Comic.jsx
-|   |-- ConfigUsuario.jsx
 |   |-- Contacto.jsx
 |   |-- Evento.jsx
 |   |-- Inicio.jsx
@@ -149,8 +145,11 @@ src/
 |   |-- LayoutPublic.jsx
 |-- router/
 |   |-- index.jsx
-|-- styles/
-|   |-- 
+|-- context/
+|   |-- UserContext.jsx
+|-- config/
+|   |-- Firebase.jsx
+|-- sass/
 |-- Main.jsx
 ```
 
