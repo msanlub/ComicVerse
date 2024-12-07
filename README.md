@@ -186,3 +186,7 @@ Punto de entrada principal de la aplicación React..
 
 
 [Integración de la Api y comunicación asíncrona](/integracionApi.md)
+
+[Documentación app](/docs/index.html)
+
+[Conclusión](/Conclusión.md)
