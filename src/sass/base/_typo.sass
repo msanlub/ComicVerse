@@ -16,41 +16,11 @@ $font-title: 'Bangers', sans-serif
 
 // Tamaños de fuente
 $font-size-description: 16px
-$font-size-title-init: 40px
-$font-size-title: 40px
+$font-size-title-init: 36px
+$font-size-title: 28px
 $font-size-link: 24px
 
 // Espaciado entre letras
 $letter-spacing-title: 0.3rem
+$letter-spacing-description: 0.04rem
 
-// Mixins para estilos de texto
-@mixin description-text
-  font-family: $font-description
-  font-size: $font-size-description
-
-@mixin title-text-init($weight: 800)
-  font-family: $font-title-init
-  font-weight: $weight
-  font-size: $font-size-title-init
-  letter-spacing: $letter-spacing-title 
-
-@mixin title-text($weight: 600)
-  font-family: $font-title
-  font-weight: $weight
-  font-size: $font-size-title
-  letter-spacing: $letter-spacing-title 
-
-@mixin link-text($weight: 400)
-  font-family: $font-title
-  font-weight: $weight
-  font-size: $font-size-link
-
-// Ejemplos de uso
-//.description
-//  @include description-text
-
-//h1, h2, h3
-//  @include title-text(700)
-
-//a
-//  @include link-text(600)

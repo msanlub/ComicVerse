@@ -1,0 +1,35 @@
+@import '../utilities/_variables.sass'
+@import '../base/_typo.sass'
+
+// Mixins para estilos de texto
+@mixin description-text
+  font-family: $font-description
+  font-size: $font-size-description
+  letter-spacing: $letter-spacing-description
+
+@mixin title-text-init($weight: 800)
+  font-family: $font-title-init
+  font-weight: $weight
+  font-size: $font-size-title-init
+  letter-spacing: $letter-spacing-title 
+
+@mixin title-text($weight: 300)
+  font-family: $font-title
+  font-weight: $weight
+  font-size: $font-size-title
+  letter-spacing: $letter-spacing-title 
+
+@mixin link-text($weight: 400)
+  font-family: $font-title
+  font-weight: $weight
+  font-size: $font-size-link
+
+// Ejemplos de uso
+//.description
+//  @include description-text
+
+//h1, h2, h3
+//  @include title-text(700)
+
+//a
+//  @include link-text(600)
