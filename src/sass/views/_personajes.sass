@@ -1,0 +1,77 @@
+@import '../utilities/_variables.sass'
+@import '../base/_typo.sass'
+@import '../utilities/_mixins.sass'
+
+.contenedor__busqueda
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 20px
+
+  input[type="text"]
+    width: 80%
+    max-width: 400px
+    padding: 15px
+    font-size: 18px
+    border: none
+    border-radius: $border-radius
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+    transition: all 0.3s ease
+    text-align: center
+    margin-bottom: 20px
+
+    &:focus
+      outline: none
+      box-shadow: 0 6px 8px rgba(166, 41, 64, 0.2)
+      transform: translateY(-2px)
+
+  button
+    padding: 12px 25px
+    font-size: 16px
+    background-color: $primary-color
+    color: white
+    border: none
+    border-radius: 20px
+    cursor: pointer
+    transition: all 0.3s ease
+
+    &:hover
+      background-color: darken(#A62940, 10%)
+      transform: translateY(-2px)
+
+.character__info
+    display: flex
+    flex-direction: row
+    margin: 2rem
+    gap: 2rem
+
+.info__descripcion
+    display: flex
+    flex-direction: column
+
+
+.descripcion__titulo
+     @include title-text
+     font-size: 400%
+     background-color: $background-light
+     text-align: center
+
+.descripcion__bibliografia
+    @include description-text 
+    max-width: 24rem
+    
+
+.info__img
+    max-height: 30rem
+    border: $border-light
+    border-radius: $border-radius
+
+.error__mensaje
+  color: $primary-color
+  @include title-text(700)
+  background-color: rgba(255, 0, 0, 0.1) 
+  border: $border-light
+  border-radius: $border-radius
+  padding: 10px
+  margin: 20px auto 
+  text-align: center

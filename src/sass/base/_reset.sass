@@ -3,7 +3,6 @@
 
 main    
     min-height: 80vh
- 
 
 a
     text-decoration: none
@@ -16,3 +15,23 @@ a
 
 ul
     list-style: none
+
+//inputs
+
+input
+    width: 20%
+    padding: 10px
+    box-sizing: border-box
+
+placeholder
+    position: absolute
+    background-color: $background-light
+    padding: 200px
+    top: 7px
+    left: 10px
+    transition: all 0.3s ease
+    pointer-events:none
+
+input:focus + placeholder
+    transform: translateY(-15px)
+    font-size: 12px

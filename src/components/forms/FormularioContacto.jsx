@@ -52,13 +52,8 @@ const FormularioContacto = () => {
   });
 
   return (
-    <Box sx={{ mt: "1rem", maxWidth: "400px", textAlign: "center" }}>
-      <Avatar sx={{ mx: "auto", bgcolor: "#111" }}>
-        <QuestionAnswerIcon />
-      </Avatar>
-      <Typography variant='h5' component="h1">
-        Contacto
-      </Typography>
+    <Box className='cotenedor__formulario'>
+      <h1 className='formulario__titulo'>CONTACTO</h1>
       <Formik
         initialValues={estadoInicial}
         onSubmit={onSubmit}

@@ -118,12 +118,12 @@ const Inicio = () => {
       ) : (
         <>
           <section className="listado__comics">
-            <h1>COMICS</h1>
+            <h2>COMICS</h2>
             <ListaComics comics={comicsData} />
           </section>
 
           <section className='listado__eventos'>
-            <h1>EVENTOS</h1>
+            <h2>EVENTOS</h2>
             <ListaEventos 
               eventos={currentEvents} 
               currentPage={currentPage}

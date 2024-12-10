@@ -3,8 +3,16 @@
 @import '../base/typo.sass'
 
 h1
-    @include title-text-init(800)
-    font-size: 500%
+    @include title-text-init
+    font-size: $font-size-title-init
     color: black
     margin: 4rem
     text-align: center
+
+h2
+    @include title-text-init
+    font-size: $font-size-title-init
+    color: black
+    text-align: center
+    margin-top: 4rem
+    background-color: $card-color

@@ -116,10 +116,10 @@ const Personaje = () => {
     fetchComics(filters); // Aplicar los filtros al buscar cómics
   };
 
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p className="error__mensaje">Error: {error}</p>;
 
   return (
-    <>
+    <section className='contenedor__busqueda'>
       <input
       type="text"
       value={characterName}
@@ -147,10 +147,12 @@ const Personaje = () => {
         <>
           {hasCharacter && (
             <>
-              <div className="character-info">
-                <h2>{characterData.name}</h2>
-                <p>{characterData.description}</p>
-                <img src={characterData.image} alt={characterData.name} />
+              <div className="character__info">
+                <section className='info__descripcion'>
+                  <h2 className='descripcion__titulo'>{characterData.name}</h2>
+                  <p className='descripcion__bibliografia'>{characterData.description}</p>
+                </section>
+                <img className='info__img' src={characterData.image} alt={characterData.name} />
               </div>
 
               <BuscadorComics onSearch={handleSearchFilters} />
@@ -174,7 +176,7 @@ const Personaje = () => {
           )}
         </>
       )}
-    </>
+    </section>
   );
 }
 

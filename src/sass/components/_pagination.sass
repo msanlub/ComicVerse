@@ -21,22 +21,19 @@
 
 .item__numero
     color: $primary-color
-    @include title-text-init(700)
-    font-size: 40px
-    border: 2px
-    border-radius: 30px
+    @include title-text-init
+    font-size: 3rem
+    border-radius: $border-light
     padding: 10px 15px
     cursor: pointer
-    background-color: white
-    transition: background-color 0.3s, transform 0.2s
-
+    background-color: $background-light
+    
 
 /* Efecto hover */
-.item__numero:hover 
-    color: $primary-color-dark
+.flecha:hover 
     transform: scale(1.4)
 
 
 /* Efecto activo (cuando se hace clic) */
-.item__numero:active 
+.flecha:active 
     transform: scale(0.95)

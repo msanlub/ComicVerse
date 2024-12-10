@@ -2,25 +2,15 @@ $themes: (
   light: (
     background-color: $background-light,
     text-color: $text-color-light,
-    border-color: $border-color-light
+    border-color: $border-light,
+    card-color: $card-color,
+    error-color: $error-color
   ),
   dark: (
     background-color: $background-dark,
     text-color: $text-color-dark,
-    border-color: $border-color-dark
+    border-color: $border-dark,
+    card-color: $card-color-dark,
+    error-color: $error-color-dark
   )
-);
-
-@mixin theme-aware($key, $color-map: $themes) {
-  @each $theme, $colors in $color-map {
-    [data-theme="#{$theme}"] & {
-      #{$key}: map-get($colors, $key);
-    }
-  }
-}
-
-// Uso
-body {
-  @include theme-aware('background-color');
-  @include theme-aware('color', $themes);
-}
+)

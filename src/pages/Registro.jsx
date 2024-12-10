@@ -66,7 +66,8 @@ const Registro = () => {
     });
 
     return (
-        <Box sx={{ mt: "1rem", maxWidth: "400px", textAlign: "center" }}>
+        <section className='registro__formulario' >
+            <Box sx={{ mt: "1rem", maxWidth: "400px", textAlign: "center" }}>
             <Avatar sx={{ mx: "auto", bgcolor: "#111" }}>
                 <LoginIcon />
             </Avatar>
@@ -175,6 +176,9 @@ const Registro = () => {
                 )}
             </Formik>
         </Box>
+        
+        </section>
+        
     );
 };
 

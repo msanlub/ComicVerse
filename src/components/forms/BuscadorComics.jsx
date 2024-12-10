@@ -28,8 +28,8 @@ const BuscadorComics = ({ onSearch }) => {
   }, [format, orderBy, noVariants]); 
 
   return (
-    <form>
-      <select value={format} onChange={(e) => setFormat(e.target.value)}>
+    <form className='formulario__busqueda'>
+      <select className='busqueda__formato' value={format} onChange={(e) => setFormat(e.target.value)}>
         <option value="">Formato de publicación</option>
         <option value="comic">Comic</option>
         <option value="magazine">Revista</option>
@@ -39,24 +39,26 @@ const BuscadorComics = ({ onSearch }) => {
         <option value="digital comic">Digital</option>
       </select>
 
-      <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
+      <select className='busqueda__ordenar' value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
         <option value="">Ordenar por</option>
         <option value="issueNumber">Número de emisión</option>
         <option value="onsaleDate">Fecha de venta</option>
         <option value="title">Título</option>
       </select>
 
-      <section>
-        <label>
+      <section className='busqueda__variantes'>
+        <label className='busqueda__label'>
           <input
+            className='busqueda__conVariante'
             type="radio"
             checked={!noVariants}
             onChange={() => setNoVariants(false)}
           />
           Con variantes
         </label>
-        <label>
+        <label className='busqueda__label'>
           <input
+            className='busqueda__sinVariante'
             type="radio"
             checked={noVariants}
             onChange={() => setNoVariants(true)}

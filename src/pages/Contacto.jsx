@@ -9,9 +9,9 @@ import imgContacto from '../assets/img_contacto.jpg';
  */
 const Contacto = () => {
   return (
-    <section>
-      <img src={imgContacto} alt="" />
-      <FormularioContacto />
+    <section className="contacto__formulario">
+      <FormularioContacto className='formulario__desarrollo' />
+      <img className='formulario__imagen' src={imgContacto} alt="" />
     </section>
   )
 }
