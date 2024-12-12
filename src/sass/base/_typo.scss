@@ -1,0 +1,37 @@
+// Importar las fuentes 
+@import url('https://fonts.googleapis.com/css2?family=Allerta&family=Bangers&family=Oswald:wght@400;700&display=swap');
+
+// Komigo fuente
+@font-face {
+  font-family: 'Komigo';
+  src: url('../../assets/fonts/Komigo3D-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Variables de fuentes
+$font-description: 'Allerta', sans-serif;
+$font-title-init: 'Komigo', 'Oswald'; 
+$font-title: 'Bangers', sans-serif;
+
+// Tamaños de fuente
+$font-size-description: 16px;
+$font-size-title-init: 60px;
+$font-size-title: 28px;
+$font-size-link: 24px;
+
+// Espaciado entre letras
+$letter-spacing-title: 0.3rem;
+$letter-spacing-description: 0.04rem;
+
+:root {
+  --font-description: #{$font-description};
+  --font-title-init: #{$font-title-init};
+  --font-title: #{$font-title};
+  --font-size-description: #{$font-size-description};
+  --font-size-title-init: #{$font-size-title-init};
+  --font-size-title: #{$font-size-title};
+  --font-size-link: #{$font-size-link};
+  --letter-spacing-title: #{$letter-spacing-title};
+  --letter-spacing-description: #{$letter-spacing-description};
+}

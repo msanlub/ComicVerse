@@ -1,0 +1,84 @@
+@keyframes martilloEntrada {
+  0% {
+    transform: translateX(-200%) translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(720deg);
+  }
+}
+
+@keyframes romperPantalla {
+  0% { 
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% { 
+    clip-path: circle(150% at 50% 50%);
+    opacity: 1;
+  }
+}
+
+.notFound {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .notFoundImage {
+    width: auto;
+    height: 100%; 
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+  }
+
+  .martillo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px; 
+    height: auto;
+    animation: martilloEntrada 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    z-index: 3;
+  }
+
+  .pantallaRota {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: auto;
+    height: 90%; 
+    opacity: 0;
+    animation: romperPantalla 0.5s forwards;
+    animation-delay: 2.5s; 
+    z-index: 2;
+  }
+
+  .link {
+    position: relative;
+    z-index: 4;
+    margin-top: 20px;
+    padding: 10px 20px;
+    
+    color: var(--primary-color);
+    text-decoration: none;
+    
+    border-radius: var(--border-radius, 5px); 
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--primary-color); 
+      color: var(--text-color-dark); 
+    }
+}
+}

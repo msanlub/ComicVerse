@@ -1,4 +1,4 @@
-import '../sass/layout/_footer.sass';
+
 import logo from '../assets/logoFooter.png';
 import { NavLink } from 'react-router-dom';
 

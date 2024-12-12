@@ -1,4 +1,4 @@
-import '../sass/components/_pagination.sass';
+
 import flechaDcha from '../assets/flechaDcha.png';
 import flechaIzda from '../assets/flechaIzda.png';
 

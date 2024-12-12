@@ -1,0 +1,51 @@
+@import '../utilities/variables';
+@import '../base/typo';
+@import '../utilities/mixins';
+
+.formulario__busqueda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--border-radius, 10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 500px;
+  background-color: var(--card-color);
+}
+
+.busqueda__formato,
+.busqueda__ordenar {
+  width: 100%;
+  padding: 10px;
+  font-size: var(--font-size-description);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius, 5px);
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  &:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+}
+
+.busqueda__variantes {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.busqueda__label {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+
+  input[type="radio"] {
+    margin-right: 5px;
+    accent-color: var(--primary-color);
+  }
+}

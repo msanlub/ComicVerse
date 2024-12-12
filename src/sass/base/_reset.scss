@@ -1,0 +1,82 @@
+// Importaciones
+@import '../utilities/_variables'; 
+@import './_typo'; 
+
+// Variables de tema
+:root {
+  --primary-color: #{$primary-color-light};
+  --secondary-color: #{$secondary-color-light};
+  --card-color: #{$card-color-light};
+  --error-color: #{$error-color-light};
+  --text-color: #{$text-color-light};
+  --text-color-description: #{$text-color-description-light};
+  --background-color: #{$background-light}; 
+  --border-color: #{$text-color-light};
+}
+
+.dark-theme {
+  --primary-color: #{$primary-color-dark}; 
+  --secondary-color: #{$secondary-color-dark};
+  --card-color: #{$card-color-dark};
+  --error-color: #{$error-color-dark};
+  --text-color: #{$text-color-dark};
+  --text-color-description: #{$text-color-description-dark};
+  --background-color: #{$background-dark};
+  --border-color: #{$text-color-dark};
+}
+
+// Estilos generales
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+main {
+  min-height: 80vh;
+}
+
+// Enlaces
+a {
+  text-decoration: none;
+  @include link-text(400);
+  color: var(--primary-color);
+
+  &:hover {
+    color: var(--secondary-color);
+    transform: scale(1.05);
+  }
+}
+
+// Listas
+ul {
+  list-style: none;
+}
+
+// Tarjetas
+.card {
+  background-color: var(--card-color);
+  border: 4px solid var(--border-color);
+  border-radius: var(--border-radius); 
+}
+
+// Inputs
+input {
+  width: 20%;
+  padding: 10px;
+  box-sizing: border-box;
+
+  &:focus + .placeholder {
+    transform: translateY(-15px);
+    font-size: 12px;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  background-color: var(--background-color);
+  padding: 200px; 
+  top: 7px;
+  left: 10px;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}

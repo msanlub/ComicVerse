@@ -1,0 +1,30 @@
+// Utilities
+@import './utilities/_mixins'; 
+@import './utilities/_variables'; 
+
+// Base
+@import './base/_reset'; 
+@import './base/_typo';
+
+// Components
+@import './components/_cardComic'; 
+@import './components/_cardEvento'; 
+@import './components/_forms'; 
+@import './components/_listaComic'; 
+@import './components/_listaEvento'; 
+@import './components/_pagination'; 
+@import './components/_galeriaImagenes'; 
+@import './components/_busqueda'; 
+@import './components/_flechaScroll'; 
+
+// Layout
+@import './layout/_footer';
+@import './layout/_header';
+
+// Views
+@import './views/_contacto'; 
+@import './views/_inicio';
+@import './views/_personajes'; 
+@import './views/_usuario'; 
+@import './views/_notFound';
+@import './views/_registro';

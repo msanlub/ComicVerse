@@ -1,0 +1,16 @@
+// ListaComics.scss
+
+.container__listaComics {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--card-color);
+}
+
+.listaComics {
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: nowrap;
+  gap: 2rem;
+}
+

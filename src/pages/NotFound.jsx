@@ -1,16 +1,24 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import notFoundImage from '../assets/notFoundDef.png';
+import pantallaRota from '../assets/pantallaRota.png';
+import martilloThor from '../assets/icons/icono-thor.png';
 
-/**
- * Página de error notFound
- * @returns imágen notFound
- */
 const NotFound = () => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      document.querySelector('.pantallaRota').style.opacity = '1';
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div>
-      <h1>Pagina No Encontrada</h1>
-      <img src={notFoundImage} alt="Not Found" />
-      <Link to="/">Volver al inicio</Link>
+    <div className="notFound">
+      <img className="notFoundImage" src={notFoundImage} alt="Not Found" />
+      <img className="martillo" src={martilloThor} alt="Martillo" />
+      <img className="pantallaRota" src={pantallaRota} alt="Pantalla rota" />
+      <Link className="link" to="/">Volver al inicio</Link>
     </div>
   );
 }

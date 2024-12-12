@@ -1,0 +1,22 @@
+// Página de inicio
+@import '../utilities/_variables';
+@import '../base/_typo';
+
+h1 {
+    @include title-text-init; 
+    font-size: var(--font-size-title-init); 
+    color: var(--text-color); 
+    margin: 4rem;
+    text-align: center;
+}
+
+h2 {
+    @include title-text-init;
+    font-size: var(--font-size-title-init); 
+    color: var(--text-color); 
+    text-align: center;
+    margin-top: 4rem;
+    background-color: var(--card-color); 
+}
+
+

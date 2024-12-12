@@ -1,0 +1,21 @@
+@import '../utilities/variables';
+@import '../base/typo';
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__logo {
+  height: 6rem;
+}
+
+.footer__menu {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  gap: 1rem;
+  color: var(--primary-color);
+}

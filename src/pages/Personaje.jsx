@@ -1,4 +1,4 @@
-import '../sass/views/_personajes.sass';
+
 
 import { useEffect, useState } from "react";
 import ListaComics from "../components/comics/ListaComics";

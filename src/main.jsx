@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router/index'
 
-import './sass/main.sass';
+import './sass/main.scss';
 
 import UserProvider from './context/UserContext';
 import { CssBaseline } from '@mui/material';

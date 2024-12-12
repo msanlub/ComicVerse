@@ -1,6 +1,6 @@
 
 import flecha from '../assets/flecha.png';
-import '../sass/components/_flechaScroll.sass';
+
 
 /**
  * Componente que muestra una flecha para permitir el desplazamiento suave hacia arriba en la página.

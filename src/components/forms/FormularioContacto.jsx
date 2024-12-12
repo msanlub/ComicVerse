@@ -52,7 +52,7 @@ const FormularioContacto = () => {
   });
 
   return (
-    <Box className='cotenedor__formulario'>
+    <Box className='contenedor__formulario'>
       <h1 className='formulario__titulo'>CONTACTO</h1>
       <Formik
         initialValues={estadoInicial}

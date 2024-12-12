@@ -1,26 +1,24 @@
-import '../sass/layout/_header.sass';
+
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode'; // Asegúrate de importar el icono para el modo claro
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 import logo from '../assets/logoHeader.png';
 import imagenFondo from '../assets/fondoHeader2.jpg';
 
 import { NavLink } from "react-router-dom";
 import { UserContext } from '../context/UserContext'
-import { useContext, useState } from "react"; // Importa useState
+import { useContext, useState, useEffect } from "react";
 import { logOut } from "../config/Firebase";
 
-/**
- * Componente de cabecera de la página que incluye el logo y el menú de navegación.
- * 
- * Este componente muestra un fondo, el logotipo de la aplicación y enlaces de navegación.
- * También maneja el inicio y cierre de sesión del usuario.
- *
- * @returns {JSX.Element} El componente renderizado que muestra la cabecera de la página.
- */
 const Header = () => {
     const { user, setUser } = useContext(UserContext);
-    const [isDarkMode, setIsDarkMode] = useState(false); // Estado para manejar el tema
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        return document.body.classList.contains('dark-theme'); // Verifica si ya está en modo oscuro
+    });
+
+    useEffect(() => {
+        document.body.classList.toggle('dark-theme', isDarkMode); 
+    }, [isDarkMode]);
 
     const handleLogout = async () => {
         await logOut();
@@ -28,9 +26,10 @@ const Header = () => {
     };
 
     const toggleTheme = () => {
-        setIsDarkMode(prevMode => !prevMode);
-        document.body.setAttribute('data-theme', isDarkMode ? 'light' : 'dark'); 
+        setIsDarkMode(prevMode => !prevMode); 
     };
+    
+    
 
     return (
         <header className='header'>
@@ -51,8 +50,11 @@ const Header = () => {
                     <li className='menu__opcion'><NavLink to="/busqueda">Buscar</NavLink></li>
                 </ul>
             </nav>
-            <div onClick={toggleTheme} style={{ cursor: 'pointer' }}>
-                {isDarkMode ? <LightModeIcon style={{ color: '#FFD700' }} /> : <DarkModeIcon />}
+            <div 
+                onClick={toggleTheme} 
+                className={`theme-icon ${isDarkMode ? 'theme-icon--dark' : 'theme-icon--light'}`}
+            >
+                {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
             </div>
         </header>
     );

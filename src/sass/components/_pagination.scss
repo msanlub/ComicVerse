@@ -1,0 +1,39 @@
+// Pagination.scss
+@import '../utilities/variables';
+@import '../utilities/mixins';
+@import '../base/typo';
+
+.container__pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__list {
+  display: flex;
+  gap: 16px;
+}
+
+.flecha {
+  width: 4rem;
+  height: auto;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.4); 
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.item__numero {
+  color: var(--primary-color);
+  @include title-text-init;
+  font-size: 3rem;
+  border-radius: var(--border-radius, 8px);
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: var(--background-light);
+}

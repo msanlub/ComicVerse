@@ -1,0 +1,16 @@
+@import '../utilities/variables';
+@import '../base/typo';
+@import '../utilities/mixins';
+
+// Contenedor del formulario
+.contenedor__formulario {
+    text-align: center;
+}
+
+// Título del formulario
+.formulario__titulo {
+    @include title-text-init;
+    color: var(--text-color); 
+}
+
+
