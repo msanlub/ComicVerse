@@ -3,10 +3,7 @@
 ## Índice
 
 1. [Estándares Web](#estándares-web)  
-   1.1 [¿Qué son los estándares web?](#¿qué-son-los-estándares-web)  
-   1.2 [Estándares web W3C](#¿cuáles-son-los-estándares-web-w3c)  
-   1.3 [Factores para la comprobación de estándares web W3C](#factores-para-la-comprobación-de-estándares-web-w3c)  
-
+   
 2. [Calidad del Código](#calidad-del-código)  
    2.1 [Validación HTML](#validación-del-código-html)  
    2.2 [Validación CSS](#validación-de-css)  
@@ -41,7 +38,6 @@ Entre los estándares web W3C más usados y conocidos, es posible encontrar:
 - **CSS**, por sus siglas en inglés “_Cascading Style Sheets_”. Permite la asignación de estilos para la correcta representación de los documentos.
 - **XML**, por sus siglas en inglés “_eXtensible Markup Language_”. Cuya función es la de base para un número extenso de tecnologías.
 
-### Factores para la comprobación de estándares web W3C
 
 ## Calidad del código
 En nuestro caso  HTML, CSS y JavaScript.
