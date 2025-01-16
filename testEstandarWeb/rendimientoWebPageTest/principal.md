@@ -1,4 +1,4 @@
-Se han realizado pruebas de rendimiento en https://www.webpagetest.org/, dando los siguientes resultados:
+Se han realizado pruebas de rendimiento en https://www.webpagetest.org/, simulando un ordenador portatil conectado por cable usando el navegador Chrome, dando los siguientes resultados:
 
 ![Imagen prueba rendimiento](../img/rendimientochrome1.png)
 ![Imagen prueba rendimiento](../img/rendimientochrome.png)
@@ -28,13 +28,7 @@ Se han realizado pruebas de rendimiento en https://www.webpagetest.org/, dando l
 | 13/01/2025 11:37:01 | Progreso | 1 de 3 pruebas completadas |
 | 13/01/2025 11:37:01 | Procesamiento finalizado | Ejecución: 3, Caché: 0, Finalizado: 1, Probador: iad-us-asg-cbg9-10.10.1.167-34.21.9.50 |
 
-Más pruebas realizadas para mejorar el rendimiento:
 
-[Desglose MIME](mime.md)
-
-[Pruebas de imagenes de la web](pruebaImagenes.md)
-
-[Mejoras para el rendimiento de la web](mejoras.md)
 
 
 [Volver a página principal](../testing.md)
